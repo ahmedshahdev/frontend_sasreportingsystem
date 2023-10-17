@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Components/Global/Sidebar/Sidebar";
 
 // Components
+import NewReport from "./Components/Reports/NewReport/NewReport";
 
 // Icons
 
@@ -16,14 +17,10 @@ import "./App.css";
 function App() {
   return (
     <div className="flex">
-
       {/*  */}
       <div className="p-5 w-full  lg:ml-52 relative h-screen text-a-gray">
         <Routes>
-          <Route path="/" element={<p> Home </p>} />
-          <Route path="/about" element={<p> About </p>} />
-          <Route path="/contact" element={<p> Contact </p>} />
-          <Route path="/account" element={<p> Account </p>} />
+          <Route path="/reports/new" element={<NewReport />} />
         </Routes>
       </div>
 
