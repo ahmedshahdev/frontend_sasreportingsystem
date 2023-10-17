@@ -21,6 +21,12 @@ function App() {
       <div className="p-5 w-full  lg:ml-52 relative h-screen text-a-gray">
         <Routes>
           <Route path="/reports/new" element={<NewReport />} />
+
+          {/* Departments */}
+          <Route path="/actions/department" element={<p> Departments </p>} />
+          <Route path="/actions/userroles" element={<p> User Roles </p>} />
+          <Route path="/actions/reports" element={<p> Reports </p>} />
+          <Route path="/actions/users" element={<p> Users </p>} />
         </Routes>
       </div>
 

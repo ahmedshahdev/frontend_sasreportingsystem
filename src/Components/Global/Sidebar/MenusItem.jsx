@@ -1,5 +1,5 @@
 // React Import
-import React from "react";
+import React, { useState } from "react";
 
 // Other Libraries
 import { Link } from "react-router-dom"; 
@@ -9,18 +9,18 @@ import { Link } from "react-router-dom";
 // Components
 
 // Icons
-// import { BiUser } from "react-icons/bi";
-// import {IoMdSettings} from "react-icons/io"
-// import {BsGrid} from "react-icons/bs";
 
 // Assets
 
-const MenusItem = ({link, showicon, icon, name}) => {
+const MenusItem = ({link, showicon, icon, name, isactivemenu}) => {
+
+  // Menus State
+
   return (
     <Link
       to={link}
       className={
-        "flex items-center gap-3 hover:opacity-70 text-a-gray  cursor-pointer"
+        `flex items-center gap-3 hover:opacity-70 text-a-gray ${isactivemenu && 'bg-teal-100'}  py-3 px-3 rounded-md  cursor-pointer`
       }
     >
       {showicon && icon}

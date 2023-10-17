@@ -7,6 +7,7 @@ import React from "react";
 
 // Components
 import ReportsMenu from "./MenusGroup/ReportsMenu";
+import ActionsMenu from "./MenusGroup/ActionsMenu";
 
 // Icons
 
@@ -16,7 +17,9 @@ const MenusSidebar = () => {
   return (
     <div className="mt-20 flex flex-col gap-5">
       {/* Reports Menu */}
-      <ReportsMenu/>
+      <ReportsMenu />
+      {/* Reports Menu */}
+      <ActionsMenu />
     </div>
   );
 };
