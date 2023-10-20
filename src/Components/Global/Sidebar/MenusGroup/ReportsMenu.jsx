@@ -21,7 +21,7 @@ const ReportsMenu = () => {
         <MenusItem
           showicon={true}
           name="Add Report"
-        //   link="/reports/new"
+          link="/reports/new"
           icon={<MdOutlineCreateNewFolder size="22px" />}
         />
       }
