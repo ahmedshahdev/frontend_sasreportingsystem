@@ -45,3 +45,14 @@
        transform: rotate(1turn);
     }
  }
+
+
+ .main__container {
+   width: calc(100% - 13rem);
+}
+
+@media (max-width: 1024px) {
+   .main__container {
+      width: 100%;
+   }
+}

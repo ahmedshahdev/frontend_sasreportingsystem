@@ -8,7 +8,8 @@ import { ToastContainer } from "react-toastify";
 import Sidebar from "./Components/Global/Sidebar/Sidebar";
 
 // Components
-// import NewReport from "./Components/Reports/NewReport/NewReport";
+import Department from "./Components/Department/Department";
+import NewReport from "./Components/Reports/NewReport/NewReport";
 
 // Icons
 
@@ -16,7 +17,7 @@ import Sidebar from "./Components/Global/Sidebar/Sidebar";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
-import Department from "./Components/Department/Department";
+
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
        <ToastContainer />
 
       {/* lg:ml-52 */}
-      <div className="p-5 w-full  ml-52 relative h-screen text-a-gray">
+      <div className="p-5 w-full  ml-52 relative h-screen text-a-gray main__container">
         <Routes>
-          <Route path="/reports/new" element={ <p>New Report</p> } />
+          <Route path="/reports/new" element={ <NewReport/> } />
 
           {/* Departments */}
           <Route path="/actions/department" element={<Department/>} />

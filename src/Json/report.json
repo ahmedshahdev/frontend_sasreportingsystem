@@ -1,0 +1,59 @@
+{
+    "6532acc67ce4885d88b9bab3": {
+      "report_name": "Inad ABY Report",
+      "component": "[Component for Inad ABY Report]"
+    },
+    "6532ace37ce4885d88b9bab5": {
+      "report_name": "Intercepted Report",
+      "component": "[Component for Intercepted Report]"
+    },
+    "6532acee7ce4885d88b9bab7": {
+      "report_name": "INAD OAL Report",
+      "component": "[Component for INAD OAL Report]"
+    },
+    "6532ad167ce4885d88b9bab9": {
+      "report_name": "EBT X-summary Report",
+      "component": "[Component for EBT X-summary Report]"
+    },
+    "6532ad2c7ce4885d88b9babb": {
+      "report_name": "Hala X-Summary Report",
+      "component": "[Component for Hala X-Summary Report]"
+    },
+    "6532ad427ce4885d88b9babd": {
+      "report_name": "Credit Card Report",
+      "component": "[Component for Credit Card Report]"
+    },
+    "6532ad977ce4885d88b9babf": {
+      "report_name": "Refusal",
+      "component": "[Component for Refusal]"
+    },
+    "6532ad9d7ce4885d88b9bac1": {
+      "report_name": "Aby Report",
+      "component": "[Component for Aby Report]"
+    },
+    "6532ada67ce4885d88b9bac3": {
+      "report_name": "DNB PAX",
+      "component": "[Component for DNB PAX]"
+    },
+    "6532adb67ce4885d88b9bac5": {
+      "report_name": "Random Check Format",
+      "component": "[Component for Random Check Format]"
+    },
+    "6532adcb7ce4885d88b9bac7": {
+      "report_name": "Ticket Sales",
+      "component": "[Component for Ticket Sales]"
+    },
+    "6532adf37ce4885d88b9bac9": {
+      "report_name": "QCI & Printing Sales",
+      "component": "[Component for QCI & Printing Sales]"
+    },
+    "6532adfc7ce4885d88b9bacb": {
+      "report_name": "Seat Sales",
+      "component": "[Component for Seat Sales]"
+    },
+    "6532ae1b7ce4885d88b9bacd": {
+      "report_name": "OAL Report",
+      "component": "[Component for OAL Report]"
+    }
+  }
+  
