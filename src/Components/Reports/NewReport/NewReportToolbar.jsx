@@ -18,7 +18,7 @@ import EBT_XSUMMARY_REPORT from "../ReportHala/EBT_XSUMMARY_REPORT";
 import HALA_XSUMMARY_REPORT from "../ReportHala/HALA_XSUMMARY_REPORT";
 import OAL_REPORT from "../ReportOal/OAL_REPORT";
 import QCI_AND_PRINTING_SALES_REPORT from "../ReportReservation/QCI_AND_PRINTING_SALES_REPORT";
-import SEAT_SALES_REPORT from "../ReportReservation/SEAT_SALES_REPORT.jsx";
+import SEAT_SALES_REPORT from "../ReportReservation/SEAT_SALES_REPORT/SEAT_SALES_REPORT.jsx";
 import TICKET_SALES_REPORT from "../ReportReservation/TICKET_SALES_REPORT";
 import INAD_ABY_REPORT from "../ReportVct/INAD_ABY_REPORT";
 import INAD_OAL_REPORT from "../ReportVct/INAD_OAL_REPORT";
