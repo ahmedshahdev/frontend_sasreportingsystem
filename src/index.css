@@ -8,6 +8,15 @@
 }
 
 
+::-webkit-scrollbar {
+   width: 7px;
+   height: 7px;
+}
+::-webkit-scrollbar-thumb {
+   background-color: #ccc;
+}
+
+
 .spinner-wrapper {
     position: absolute;
     top: 50%;

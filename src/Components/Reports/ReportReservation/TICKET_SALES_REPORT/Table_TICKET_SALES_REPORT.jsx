@@ -6,14 +6,14 @@ import React from "react";
 // Global Components
 
 // Components
-import TableRow from "./TableROW_SEAT_SALES_REPORT";
+import TableRow from './TableROW_TICKET_SALES_REPORT'
 
 // Icons
 import {MdOutlineAddCircleOutline, MdRemoveCircleOutline, MdOutlineControlPointDuplicate} from 'react-icons/md'
 
 // Assets
 
-const Table_SEAT_SALES_REPORT = () => {
+const Table_TICKET_SALES_REPORT = () => {
     return (
       <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
         <thead className="bg-gradient-to-r from-a-pink to-a-blue text-black">
@@ -28,23 +28,31 @@ const Table_SEAT_SALES_REPORT = () => {
               Receipt No
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">PNR</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">Staff</td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Voucher No
+              Name of PAX
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              Flight No
-            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Flight No</td>
             <td class="border border-slate-400 font-bold uppercase p-1">From</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">To</td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              No OF Seat
+              To
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Amount Cash
+              Return
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Amount Card
+              Cash
+            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">
+              Credit Card
+            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">
+              SAS Charges
+            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">
+              SAS Charges CC
+            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">
+              Grand Total
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
               Payment Details
@@ -57,10 +65,13 @@ const Table_SEAT_SALES_REPORT = () => {
           <TableRow />
           <TableRow />
           <TableRow />
+          <TableRow />
+          <TableRow />
+          <TableRow />
           
         </tbody>
       </table>
     );
   };
 
-export default Table_SEAT_SALES_REPORT;
+export default Table_TICKET_SALES_REPORT;
