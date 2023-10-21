@@ -4,6 +4,7 @@ import React from "react";
 // Other Libraries
 
 // Global Components
+import BreadCrumbs from "../../../Global/BreadCrumbs/BreadCrumbs";
 
 // Components
 import Table from "./Table_SEAT_SALES_REPORT"
@@ -16,6 +17,10 @@ import {MdOutlineAddCircleOutline, MdRemoveCircleOutline, MdOutlineControlPointD
 const SEAT_SALES_REPORT = () => {
   return (
     <div className="w-full">
+
+      {/* Breadcrumb Basic */}
+      <BreadCrumbs list={['Reports', 'Reservation Report', 'Seat Sales']}/>
+
       {/* Table */}
       <div className="w-full  lg:overflow-x-scroll">
         <Table />

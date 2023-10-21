@@ -29,73 +29,73 @@ const TableRow_SEAT_SALES_REPORT = () => {
       <td class="border border-slate-400 uppercase">
         <input
           type="date"
-          className="px-2 text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1 "
+          className="px-2  text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1 "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-24  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
       <td class="border border-slate-400 uppercase">
         <input
           type="text"
-          className="px-2  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
+          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
       </td>
     </tr>
