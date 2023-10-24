@@ -26,7 +26,7 @@ const DepartmentTable = ({}) => {
   return (
     <table class="border-collapse  w-full text-sm rounded-lg overflow-x-scroll    ">
       <thead className="bg-gradient-to-r rounded-md from-a-pink to-a-blue  bg-teal-400 text-white">
-        <tr>
+        <tr className="bg-zinc-100">
           <td class=" border border-slate-300  p-4 py-2 font-bold  ">Departments</td>
           <td class=" border border-slate-300  p-4 py-2 font-bold">Actions</td>
         </tr>

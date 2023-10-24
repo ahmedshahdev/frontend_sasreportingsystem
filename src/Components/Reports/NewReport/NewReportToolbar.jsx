@@ -9,20 +9,21 @@ import { MiniLoadingBar } from "../../Global/Loader/LoadingBar";
 
 // ? Components
 // Reports
-import ABY_REPORT from "../ReportAby/ABY_REPORT.jsx";
-import DNB_PAX_REPORT from "../ReportAby/DNB_PAX_REPORT.jsx";
-import RANDOM_CHECK_FORMAT from "../ReportAby/RANDOM_CHECK_FORMAT.jsx";
-import REFUSAL_REPORT from "../ReportAby/REFUSAL_REPORT";
+import ABY_REPORT from "../ReportAby/ABY_REPORT/ABY_REPORT";
+import DNB_PAX_REPORT from "../ReportAby/DNB_PAX_REPORT/DNB_PAX_REPORT";
+import RANDOM_CHECK_FORMAT from "../ReportAby/RANDOM_CHECK_FORMAT_REPORT/RANDOM_CHECK_FORMAT_REPORT";
+import REFUSAL_REPORT from "../ReportAby/REFUSAL_REPORT/REFUSAL_REPORT";
 import CREDIT_CARD_REPORT from "../ReportHala/CREDIT_CARD_REPORT/CREDIT_CARD_REPORT";
 import EBT_XSUMMARY_REPORT from "../ReportHala/EBT_XSUMMARY_REPORT/EBT_XSUMMARY_REPORT";
 import HALA_XSUMMARY_REPORT from "../ReportHala/HALA_XSUMMARY_REPORT/HALA_XSUMMARY_REPORT";
-import OAL_REPORT from "../ReportOal/OAL_REPORT";
+import OAL_REPORT from "../ReportOal/OAL_REPORT/OAL_REPORT";
 import QCI_AND_PRINTING_SALES_REPORT from "../ReportReservation/QCI_AND_PRINTING_SALES_REPORT/QCI_AND_PRINTING_SALES_REPORT";
 import SEAT_SALES_REPORT from "../ReportReservation/SEAT_SALES_REPORT/SEAT_SALES_REPORT.jsx";
 import TICKET_SALES_REPORT from "../ReportReservation/TICKET_SALES_REPORT/TICKET_SALES_REPORT";
-import INAD_ABY_REPORT from "../ReportVct/INAD_ABY_REPORT";
-import INAD_OAL_REPORT from "../ReportVct/INAD_OAL_REPORT";
-import INTERCEPTED_REPORT from "../ReportVct/INTERCEPTED_REPORT";
+import INAD_ABY_REPORT from "../ReportVct/INAD_ABY_REPORT/INAD_ABY_REPORT";
+import INAD_OAL_REPORT from "../ReportVct/INAD_OAL_REPORT/INAD_OAL_REPORT";
+import INTERCEPTED_REPORT from "../ReportVct/INTERCEPTED_REPORT/INTERCEPTED_REPORT";
+import ShiftCsm_REPORT from "../ReportCSM/CSM_SHIFT_REPORT/CSM_SHIFT_REPORT";
 
 // Icons
 
@@ -99,6 +100,10 @@ const NewReportToolbar = () => {
     "6532ae1b7ce4885d88b9bacd": {
       "report_name": "OAL Report",
       "component": OAL_REPORT
+    },
+    "6534593abeecf3fbb5d1730a": {
+      "report_name": "CSM Shift Report",
+      "component":ShiftCsm_REPORT
     }
   }
   
@@ -165,7 +170,7 @@ const NewReportToolbar = () => {
 
           setTimeout(() => {
             setprocessinghandlereport(false);
-          }, 300);
+          }, 500);
         });
     }
   }, [selectedreportcategory]);

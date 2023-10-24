@@ -15,7 +15,7 @@ import MenusSidebar from './MenusSidebar'
 
 const Sidebar = () => {
   return (
-    <div className=' p-5 z-50 fixed w-52 h-screen lg:block '>
+    <div className='bg-zinc-100 p-5 z-50 fixed w-52 h-screen lg:block '>
         
         {/* Header For Sidebar */}
         <HeaderSidebar/>

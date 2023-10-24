@@ -6,35 +6,34 @@ import React from "react";
 // Global Components
 
 // Components
-import TableRow from "./TableROW_EBT_XSUMMARY_REPORT";
+import TableRow from "./TableROW_RANDOM_CHECK_FORMAT_REPORT";
 
 // Icons
 import {MdOutlineAddCircleOutline, MdRemoveCircleOutline, MdOutlineControlPointDuplicate} from 'react-icons/md'
 
 // Assets
 
-const Table_EBT_XSUMMARY_REPORT = () => {
+const RANDOM_CHECK_FORMAT_REPORT = () => {
     return (
       <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
         <thead className="bg-gradient-to-r from-a-pink to-a-blue text-black">
           <tr className="bg-zinc-100">
           <td class="border border-slate-400 font-bold uppercase p-1 pl-2">
-              Service Code
+              FLT No
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1 pl-2">
-              Service Name
+              Sector
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Quantity
+              Seq NBR
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">Amount</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">NET</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              VAT
-            </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              Total
-            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">PNR</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">FBA</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">System WT</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Actual WT</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Remarks</td>
+
+         
           </tr>
         </thead>
         <tbody class="bg1a-gr2">
@@ -49,4 +48,4 @@ const Table_EBT_XSUMMARY_REPORT = () => {
     );
   };
 
-export default Table_EBT_XSUMMARY_REPORT;
+export default RANDOM_CHECK_FORMAT_REPORT;

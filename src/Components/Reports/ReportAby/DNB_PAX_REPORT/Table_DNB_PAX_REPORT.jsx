@@ -6,35 +6,32 @@ import React from "react";
 // Global Components
 
 // Components
-import TableRow from "./TableROW_EBT_XSUMMARY_REPORT";
+import TableRow from "./TableROW_DNB_PAX_REPORT";
 
 // Icons
 import {MdOutlineAddCircleOutline, MdRemoveCircleOutline, MdOutlineControlPointDuplicate} from 'react-icons/md'
 
 // Assets
 
-const Table_EBT_XSUMMARY_REPORT = () => {
+const Table_DNB_PAX_REPORT = () => {
     return (
       <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
         <thead className="bg-gradient-to-r from-a-pink to-a-blue text-black">
           <tr className="bg-zinc-100">
           <td class="border border-slate-400 font-bold uppercase p-1 pl-2">
-              Service Code
+              S.NO
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1 pl-2">
-              Service Name
+              PNR
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Quantity
+              Original Flt No
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">Amount</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">NET</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              VAT
-            </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              Total
-            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Rebook / Norec FLT NO</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">No. of PAX</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Reason For DNB</td>
+
+         
           </tr>
         </thead>
         <tbody class="bg1a-gr2">
@@ -49,4 +46,4 @@ const Table_EBT_XSUMMARY_REPORT = () => {
     );
   };
 
-export default Table_EBT_XSUMMARY_REPORT;
+export default Table_DNB_PAX_REPORT;
