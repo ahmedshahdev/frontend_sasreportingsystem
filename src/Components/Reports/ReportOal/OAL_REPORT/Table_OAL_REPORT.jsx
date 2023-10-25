@@ -19,43 +19,35 @@ const Table_OAL_REPORT = () => {
         <thead className="bg-gradient-to-r from-a-pink to-a-blue text-black">
           <tr className="bg-zinc-100">
           <td class="border  border-slate-400 font-bold uppercase p-1 pl-2">
-              Add
-            </td>
-            <td class="border border-slate-400 font-bold uppercase p-1 pl-2">
-              Date
+            {/* for action */}
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Receipt No
-            </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">PNR</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">Staff</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              Voucher No
+              Added By (STAFF)
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Flight No
-            </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">From</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">To</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              No OF Seat
+              SL No
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Amount Cash
+              FLT NO
+            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">DEST</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">STD</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">
+              ATD
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              Amount Card
+              TOB ADULT
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
-              Payment Details
-            </td>
+            <td class="border border-slate-400 font-bold uppercase p-1">TOB INF</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Date</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Time</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Added Date</td>
+            <td class="border border-slate-400 font-bold uppercase p-1">Added Time</td>
+           
           </tr>
         </thead>
         <tbody class="bg1a-gr2">
 
-          <TableRow />
-          <TableRow />
-          <TableRow />
           <TableRow />
           
         </tbody>
