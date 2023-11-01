@@ -31,6 +31,7 @@ import ShiftCsm_REPORT from "../ReportCSM/CSM_SHIFT_REPORT/CSM_SHIFT_REPORT";
 import Config from "../../../Json/config.json";
 
 const NewReportToolbar = () => {
+
   // report category stats
   const [reportcategory_list, setreportcategory_list] = useState([]);
   const [processinghandlereportcategory, setprocessinghandlereportcategory] =
@@ -43,70 +44,84 @@ const NewReportToolbar = () => {
   const [selectedreport, setselectedreport] = useState(null);
 
 
-  // 
+  const [selectedreportdate, setselectedreportdate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+  const [selectedreportshift, setselectedreportshift] = useState('MORNING');
+
+  //
   const report_manual_list = {
     "6532acc67ce4885d88b9bab3": {
-      "report_name": "Inad ABY Report",
-      "component": INAD_ABY_REPORT
+      report_name: "Inad ABY Report",
+      component: <INAD_ABY_REPORT />,
     },
     "6532ace37ce4885d88b9bab5": {
-      "report_name": "Intercepted Report",
-      "component": INTERCEPTED_REPORT
+      report_name: "Intercepted Report",
+      component: <INTERCEPTED_REPORT />,
     },
     "6532acee7ce4885d88b9bab7": {
-      "report_name": "INAD OAL Report",
-      "component": INAD_OAL_REPORT
+      report_name: "INAD OAL Report",
+      component: <INAD_OAL_REPORT />,
     },
     "6532ad167ce4885d88b9bab9": {
-      "report_name": "EBT X-summary Report",
-      "component": EBT_XSUMMARY_REPORT
+      report_name: "EBT X-summary Report",
+      component: <EBT_XSUMMARY_REPORT />,
     },
     "6532ad2c7ce4885d88b9babb": {
-      "report_name": "Hala X-Summary Report",
-      "component": HALA_XSUMMARY_REPORT
+      report_name: "Hala X-Summary Report",
+      component: <HALA_XSUMMARY_REPORT />,
     },
     "6532ad427ce4885d88b9babd": {
-      "report_name": "Credit Card Report",
-      "component": CREDIT_CARD_REPORT
+      report_name: "Credit Card Report",
+      component: <CREDIT_CARD_REPORT />,
     },
     "6532ad977ce4885d88b9babf": {
-      "report_name": "Refusal",
-      "component": REFUSAL_REPORT
+      report_name: "Refusal",
+      component: <REFUSAL_REPORT />,
     },
     "6532ad9d7ce4885d88b9bac1": {
-      "report_name": "Aby Report",
-      "component": ABY_REPORT
+      report_name: "Aby Report",
+      component: <ABY_REPORT />,
     },
     "6532ada67ce4885d88b9bac3": {
-      "report_name": "DNB PAX",
-      "component": DNB_PAX_REPORT
+      report_name: "DNB PAX",
+      component: <DNB_PAX_REPORT />,
     },
     "6532adb67ce4885d88b9bac5": {
-      "report_name": "Random Check Format",
-      "component": RANDOM_CHECK_FORMAT
+      report_name: "Random Check Format",
+      component: <RANDOM_CHECK_FORMAT />,
     },
     "6532adcb7ce4885d88b9bac7": {
-      "report_name": "Ticket Sales",
-      "component": TICKET_SALES_REPORT
+      report_name: "Ticket Sales",
+      component: <TICKET_SALES_REPORT />,
     },
     "6532adf37ce4885d88b9bac9": {
-      "report_name": "QCI & Printing Sales",
-      "component": QCI_AND_PRINTING_SALES_REPORT
+      report_name: "QCI & Printing Sales",
+      component: <QCI_AND_PRINTING_SALES_REPORT />,
     },
     "6532adfc7ce4885d88b9bacb": {
-      "report_name": "Seat Sales",
-      "component": SEAT_SALES_REPORT
+      report_name: "Seat Sales",
+      component: <SEAT_SALES_REPORT />,
     },
     "6532ae1b7ce4885d88b9bacd": {
-      "report_name": "OAL Report",
-      "component": OAL_REPORT
+      report_name: "OAL Report",
+      component: (
+        <OAL_REPORT
+          report={{
+            selectedreport: selectedreport,
+            selectedreportdate: selectedreportdate,
+            selectedreportshift: selectedreportshift,
+            setselectedreportshift: setselectedreportshift
+          }}
+        />
+      ),
     },
     "6534593abeecf3fbb5d1730a": {
-      "report_name": "CSM Shift Report",
-      "component":ShiftCsm_REPORT
-    }
-  }
-  
+      report_name: "CSM Shift Report",
+      component: <ShiftCsm_REPORT />,
+    },
+  };
+
   const SelectedReportComponent = report_manual_list[selectedreport]?.component;
 
   // fetch report category
@@ -133,7 +148,6 @@ const NewReportToolbar = () => {
             setselectedreportcategory(data.payloaddata[0]);
             setprocessinghandlereport(true);
           }
-          
         } else {
           toast.error(data.alert, { autoClose: 2000 });
         }
@@ -147,7 +161,7 @@ const NewReportToolbar = () => {
   //   fetch report
   useEffect(() => {
     if (selectedreportcategory !== null) {
-      const data = { report_category:selectedreportcategory };
+      const data = { report_category: selectedreportcategory };
 
       fetch(`${Config["domains"]["serverside"]["development"]}/report/view`, {
         method: "POST",
@@ -188,7 +202,7 @@ const NewReportToolbar = () => {
           onChange={(e) => {
             setselectedreportcategory(e.target.value);
             setprocessinghandlereport(true);
-            setselectedreport("")
+            setselectedreport("");
             // setselectedreport(report_list.keys[0]);
           }}
         >
@@ -214,9 +228,33 @@ const NewReportToolbar = () => {
         >
           {!processinghandlereport &&
             report_list.map((singlereport, index) => {
-              return <option value={singlereport._id}>{singlereport.name}</option>;
+              return (
+                <option value={singlereport._id}>{singlereport.name}</option>
+              );
             })}
           {processinghandlereport && <option>Loading...</option>}
+        </select>
+
+        <input
+          value={selectedreportdate}
+          onChange={(e) => setselectedreportdate(e.target.value)}
+          type="date"
+          className="h-10 rounded-md px-3 text-sm "
+        />
+
+        {/* shift */}
+        <select
+          type="text"
+          className="h-10 rounded-md px-3 text-sm "
+          placeholder="Report Category"
+          value={selectedreport && selectedreport.SHIFT}
+          onChange={(e) => {
+            setselectedreportshift(e.target.value);
+          }}
+        >
+          {processinghandlereport && <option>Loading...</option>}
+          <option value="MORNING">Morning</option>
+          <option value="NIGHT">Night</option>
         </select>
 
         {false && (
@@ -232,8 +270,7 @@ const NewReportToolbar = () => {
 
       <div className="mt-5"></div>
 
-        {selectedreport && <SelectedReportComponent/>}
-
+      {selectedreport && SelectedReportComponent}
     </div>
   );
 };

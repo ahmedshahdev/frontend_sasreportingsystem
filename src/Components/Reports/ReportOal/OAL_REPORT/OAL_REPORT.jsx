@@ -14,20 +14,21 @@ import {MdOutlineAddCircleOutline, MdRemoveCircleOutline, MdOutlineControlPointD
 
 // Assets
 
-const OAL_REPORT = () => {
+const OAL_REPORT = ({report}) => {
   return (
     <div className="w-full">
 
       {/* Breadcrumb Basic */}
       <BreadCrumbs list={['Reports', 'OAL Report', 'Default']}/>
 
+      {/*  */}
+
       {/* Table */}
       <div className="w-full  lg:overflow-x-scroll">
-        <Table />
+        <Table report={report} />
       </div>
     </div>
   );
 };
-
 
 export default OAL_REPORT;
