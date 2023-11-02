@@ -35,7 +35,6 @@ const Table_OAL_REPORT = ({ report }) => {
       const data = {
         REPORT_ID: selectedreport,
         SHIFT: selectedreportshift,
-        SHIFT_MANAGER: "MOURAD",
         DATE: selectedreportdate,
       };
       fetch(
