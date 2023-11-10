@@ -1,26 +1,64 @@
 // React Import
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Other Libraries
+import { toast } from "react-toastify";
 
 // Global Components
-
-// Components
+import { MiniLoadingBar } from "../../../Global/Loader/LoadingBar";
 
 // Icons
 import {
   MdOutlineAddCircleOutline,
   MdRemoveCircleOutline,
-  MdOutlineControlPointDuplicate,
+  MdOutlineControlPointDuplicate
 } from "react-icons/md";
 import { TbReportAnalytics } from "react-icons/tb";
-import { MiniLoadingBar } from "../../../Global/Loader/LoadingBar";
 
 // Assets
+import Config from "../../../../Json/config.json";
 
 const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
   report_template = report_template["report_template"];
   const { processingreport_template, setprocessingreport_template } = loader;
+
+  // user states
+  const [processingfetcing_admslist, setprocessingfetcing_admslist] =
+    useState(true);
+  const [admlist, setadmlist] = useState([]);
+
+  //   fetch report
+  useEffect(() => {
+    // designation because on the user table we only want target and select to adm this is shift initiative
+    const data = {
+      DESIGNATION: "ADM",
+    };
+
+    fetch(`${Config["domains"]["serverside"]["development"]}/users/view`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Specify that you're sending JSON data
+      },
+      body: JSON.stringify(data), // Set the JSON data as the request body
+    })
+      .then((e) => {
+        return e.json();
+      })
+      .then((data) => {
+        if (data.status === "success") {
+          setadmlist(data.payloaddata);
+          setprocessingfetcing_admslist(false);
+        } else {
+          // setreport_list([]);
+          toast.error(data.alert, { autoClose: 2000 });
+          setprocessingfetcing_admslist(false);
+        }
+
+        setTimeout(() => {
+          // setprocessinghandlereport(false);
+        }, 500);
+      });
+  }, []);
 
   return (
     <div className="bg-zinc-100 p-4 mt-5 rounded-md">
@@ -36,17 +74,16 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {!processingreport_template &&
               report_template &&
               report_template.REPORT_ID.name}
-              {processingreport_template && <MiniLoadingBar/> }
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div  className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           Report ID:{" "}
           <span className="font-bold">
             {!processingreport_template &&
               report_template &&
               report_template._id}
-              {processingreport_template && <MiniLoadingBar/> }
-
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -55,20 +92,37 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {!processingreport_template &&
               report_template &&
               report_template.SHIFT}
-              {processingreport_template && <MiniLoadingBar/> }
-
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
         <div className="flex items-center gap-2">
           SHIFT Manager:{" "}
-          <span className="font-bold">
-          {!processingreport_template && 'Mr. '}
+          {/* <span className="font-bold">
             {!processingreport_template &&
               report_template &&
               report_template.SHIFT_MANAGER}
               {processingreport_template && <MiniLoadingBar/> }
 
-          </span>
+          </span> */}
+              {/* {console.log('I am report: ', report_template.SHIFT_MANAGER)} */}
+          <select
+            type="text"
+            className="h-10 rounded-md px-3 text-sm "
+            placeholder="Report Category"
+            // value={selectedreport && selectedreport.SHIFT}
+            // onChange={(e) => {
+            //   setselectedreportshift(e.target.value);
+            // }}
+          >
+            {/* {processinghandlereport && <option>Loading...</option>} */}
+            <option value="-">-</option>
+            {!processingfetcing_admslist &&
+              admlist.map((adm_staff) => {
+                return <option value={adm_staff._id}>{adm_staff.NAME}</option>;
+                console.log(adm_staff);
+                console.table(adm_staff);
+              })}
+          </select>
         </div>
         <hr />
         <hr />
@@ -78,8 +132,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {!processingreport_template &&
               report_template &&
               report_template.DATE.split("T")[0]}
-              {processingreport_template && <MiniLoadingBar/> }
-
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -88,8 +141,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {!processingreport_template &&
               report_template &&
               report_template.ADDED_DATE.split("T")[0]}
-              {processingreport_template && <MiniLoadingBar/> }
-
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -98,8 +150,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {!processingreport_template &&
               report_template &&
               report_template.TIME.split("T")[0]}
-              {processingreport_template && <MiniLoadingBar/> }
-
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -108,13 +159,13 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {!processingreport_template &&
               report_template &&
               report_template.ADDED_TIME.split("T")[0]}
-              {processingreport_template && <MiniLoadingBar/> }
-
+            {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
       </div>
     </div>
   );
 };
-
+ 
 export default OAL_REPORT_TEMPLATE;
+ 
