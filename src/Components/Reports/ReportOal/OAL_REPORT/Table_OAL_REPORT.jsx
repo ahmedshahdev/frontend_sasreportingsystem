@@ -84,9 +84,6 @@ const Table_OAL_REPORT = ({ report }) => {
               Added By (STAFF)
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">
-              SL No
-            </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
               FLT NO
             </td>
             <td class="border border-slate-400 font-bold uppercase p-1">

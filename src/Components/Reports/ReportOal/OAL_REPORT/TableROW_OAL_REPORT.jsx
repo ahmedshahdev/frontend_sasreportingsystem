@@ -55,12 +55,6 @@ const TableRow_OAL_REPORT = () => {
           type="text"
           className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
         />
-      </td>
-      <td class="border border-slate-400 uppercase">
-        <input
-          type="text"
-          className="px-2 w-28  box-border text-black rounded-none border-2 border-transparent focus:border-teal-400 border-solid  outline-none py-1  "
-        />
       </td> 
       <td class="border border-slate-400 uppercase">
         <input
