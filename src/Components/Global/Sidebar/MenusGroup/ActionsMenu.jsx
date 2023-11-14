@@ -19,7 +19,7 @@ import {TbReportAnalytics} from "react-icons/tb"
 const ActionsMenu = () => {
   return (
     <>
-      <p className=" text-xs  text-teal-500 font-bold uppercase">Actions</p>
+      <p className=" text-xs  text-blue-500 font-bold uppercase">Actions</p>
 
       {
         <MenusItem
@@ -57,7 +57,7 @@ const ActionsMenu = () => {
         />
       }
 
-      <hr />
+<hr class="h-px  bg-gray-200 border-0 dark:bg-a-dark2"></hr>
     </>
   );
 };

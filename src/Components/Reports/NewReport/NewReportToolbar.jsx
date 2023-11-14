@@ -192,11 +192,11 @@ const NewReportToolbar = () => {
   return (
     <div>
       {/* New Report Toolbar */}
-      <div className="bg-zinc-100 py-4  rounded-md flex flex-wrap lg:flex-nowrap gap-3 items-center px-5 w-full   h-auto">
+      <div className="bg-a-dark py-4  rounded-md flex flex-wrap lg:flex-nowrap gap-3 items-center px-5 w-full   h-auto">
         {/*  */}
         <select
           type="text"
-          className="h-10 rounded-md px-3 text-sm "
+          className="h-10 rounded-md px-3 text-sm bg-a-dark2 "
           placeholder="Report Category"
           value={selectedreportcategory}
           onChange={(e) => {
@@ -219,7 +219,7 @@ const NewReportToolbar = () => {
 
         <select
           type="text"
-          className="h-10 rounded-md px-3 text-sm "
+          className="h-10 rounded-md px-3 text-sm  bg-a-dark2 "
           placeholder="Report Category"
           value={selectedreport}
           onChange={(e) => {
@@ -239,13 +239,13 @@ const NewReportToolbar = () => {
           value={selectedreportdate}
           onChange={(e) => setselectedreportdate(e.target.value)}
           type="date"
-          className="h-10 rounded-md px-3 text-sm "
+          className="h-10 rounded-md px-3 text-sm  bg-a-dark2 "
         />
 
         {/* shift */}
         <select
           type="text"
-          className="h-10 rounded-md px-3 text-sm "
+          className="h-10 rounded-md px-3 text-sm  bg-a-dark2 "
           placeholder="Report Category"
           value={selectedreport && selectedreport.SHIFT}
           onChange={(e) => {
@@ -260,7 +260,7 @@ const NewReportToolbar = () => {
         {false && (
           <button
             // onClick={handleAddDepartment}
-            className="  bg-teal-400 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
+            className="  bg-blue-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
           >
             {/* {processinghandleadddepartment && <MiniLoadingBar />}
         {!processinghandleadddepartment && "Add"} */}

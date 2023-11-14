@@ -63,7 +63,7 @@ const DepartmentToolbar = () => {
   };
 
   return (
-    <div className="bg-zinc-100 py-4  rounded-md flex flex-wrap lg:flex-nowrap gap-3 items-center px-5 w-full   h-auto">
+    <div className="bg-a-dark py-4  rounded-md flex flex-wrap lg:flex-nowrap gap-3 items-center px-5 w-full   h-auto">
       <input
         type="text"
         className="h-10 rounded-md px-3 text-sm "
@@ -75,7 +75,7 @@ const DepartmentToolbar = () => {
       />
       <button
         onClick={handleAddDepartment}
-        className="  bg-teal-400 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
+        className="  bg-blue-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
       >
         {processinghandleadddepartment && <MiniLoadingBar />}
         {!processinghandleadddepartment && "Add"}

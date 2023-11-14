@@ -61,43 +61,43 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
   }, []);
 
   return (
-    <div className="bg-zinc-100 p-4 mt-5 rounded-md">
+    <div className="bg-a-dark p-4 mt-5 rounded-md">
       <div className="font-bold flex gap-2">
         {!processingreport_template && <TbReportAnalytics size="24px" />}{" "}
         {processingreport_template && <MiniLoadingBar />} Report
       </div>
-      <hr className="mt-2" />
+      <hr class="h-px mt-2 bg-gray-200 border-0 dark:bg-a-dark2"></hr>
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           Report Name:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.REPORT_ID.name}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           Report ID:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template._id}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           SHIFT:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.SHIFT}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           SHIFT Manager:{" "}
-          {/* <span className="font-bold">
+          {/* <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.SHIFT_MANAGER}
@@ -107,7 +107,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
               {/* {console.log('I am report: ', report_template.SHIFT_MANAGER)} */}
           <select
             type="text"
-            className="h-10 rounded-md px-3 text-sm "
+            className="h-10 rounded-md px-3 text-sm bg-a-dark2 "
             placeholder="Report Category"
             // value={selectedreport && selectedreport.SHIFT}
             // onChange={(e) => {
@@ -124,38 +124,39 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
               })}
           </select>
         </div>
-        <hr />
-        <hr />
-        <div className="flex items-center gap-2">
+        {/* <hr className="dark:bg-a-dark2" /> */}
+        <hr class="h-px bg-gray-200 border-0 dark:bg-a-dark2"></hr>
+        <hr class="h-px bg-gray-200 border-0 dark:bg-a-dark2"></hr>
+        <div className="flex items-center gap-2 text-xs">
           Report DATE:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.DATE.split("T")[0]}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           System Capture DATE:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.ADDED_DATE.split("T")[0]}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           Report TIME:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.TIME.split("T")[0]}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs">
           System Capture TIME:{" "}
-          <span className="font-bold">
+          <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
               report_template.ADDED_TIME.split("T")[0]}

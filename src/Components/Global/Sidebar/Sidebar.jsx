@@ -1,13 +1,13 @@
 // React Import
-import React from 'react'
+import React from 'react';
 
 // Other Libraries
 
 // Global Components
 
 // Components
-import HeaderSidebar from './HeaderSidebar'
-import MenusSidebar from './MenusSidebar'
+import HeaderSidebar from './HeaderSidebar';
+import MenusSidebar from './MenusSidebar';
 
 // Icons
 
@@ -15,7 +15,7 @@ import MenusSidebar from './MenusSidebar'
 
 const Sidebar = () => {
   return (
-    <div className='bg-zinc-100 p-5 z-50 fixed w-52 h-screen lg:block '>
+    <div className=' p-5 z-50 fixed w-52 h-screen lg:block '>
         
         {/* Header For Sidebar */}
         <HeaderSidebar/>

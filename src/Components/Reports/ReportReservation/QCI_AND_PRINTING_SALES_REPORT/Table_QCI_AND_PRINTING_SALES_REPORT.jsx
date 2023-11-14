@@ -21,7 +21,7 @@ const Table_QCI_AND_PRINTING_SALES_REPORT = () => {
   return (
     <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
       <thead className="bg-gradient-to-r from-a-pink to-a-blue text-black">
-        <tr className="bg-zinc-100">
+        <tr className="bg-a-dark">
           <td class="border border-slate-400 font-bold uppercase p-1 pl-2">
             Add
           </td>

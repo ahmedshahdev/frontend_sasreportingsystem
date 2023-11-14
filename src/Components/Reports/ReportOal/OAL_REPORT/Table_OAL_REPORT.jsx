@@ -75,44 +75,53 @@ const Table_OAL_REPORT = ({ report }) => {
         loader={{ processingreport_template, setprocessingreport_template }}
       />
       <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
-        <thead className="bg-gradient-to-r from-a-pink to-a-blue text-black">
-          <tr className="bg-zinc-100">
-            <td class="border  border-slate-400 font-bold uppercase p-1 pl-2">
+        <thead className="bg-gradient-to-r from-a-pink to-a-blue text-a-gray">
+          <tr className="bg-a-dark">
+            <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
               {/* for action */}
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               Added By (STAFF)
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               FLT NO
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               DEST
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">STD</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">ATD</td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">STD</td>
+            <td class="border border-a-dark2  text-xs uppercase p-1">ATD</td>
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               TOB ADULT
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               TOB INF
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               Date
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               Time
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               Added Date
             </td>
-            <td class="border border-slate-400 font-bold uppercase p-1">
+            <td class="border border-a-dark2  text-xs uppercase p-1">
               Added Time
             </td>
-          </tr>
+          </tr> 
         </thead>
         <tbody class="bg1a-gr2">
           <TableRow />
+          <TableRow /> 
+          <TableRow />
+          <TableRow />
+          <TableRow />
+          <TableRow />
+          <TableRow />
+          <TableRow />
+          <TableRow />
+          
         </tbody>
       </table>
     </>
