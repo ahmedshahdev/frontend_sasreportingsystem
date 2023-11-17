@@ -25,8 +25,8 @@ const OAL_REPORT = ({report}) => {
 
       {/* Table */}
       <div className="w-full  lg:overflow-x-scroll">
-        <Table report={report} />
-      </div>
+        <Table report={report}/>
+                 </div>
     </div>
   );
 };
