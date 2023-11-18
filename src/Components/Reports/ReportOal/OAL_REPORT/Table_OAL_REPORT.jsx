@@ -123,13 +123,12 @@ const Table_OAL_REPORT = ({ report }) => {
           });
       }
     }
-  }, [processingreport_template, report_template, processingallreports]);
+  }, [processingreport_template, report_template]);
 
   const handleAddNewRecord = () => {
     if (!processingreport_template) {
       // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
       if (report_template) {
-        setprocessingallreports(true)
         const data = {
           REPORT_TEMPLATE: report_template._id,
         };
@@ -148,10 +147,10 @@ const Table_OAL_REPORT = ({ report }) => {
             return e.json();
           })
           .then((data) => {
-            setprocessingallreports(false)
             if (data.status === "success") {
               toast.success(data.alert, { autoClose: 2000 });
               setTimeout(() => {
+                setallreports((prevReports)=>[...prevReports, data.payloaddata])
                 // setallreports(data.payloaddata);
                 // console.log(data.payloaddata);
                 // setprocessingallreports(false);
