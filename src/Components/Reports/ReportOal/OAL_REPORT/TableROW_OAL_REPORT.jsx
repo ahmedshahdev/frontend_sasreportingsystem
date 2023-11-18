@@ -18,7 +18,10 @@ import {
 // Assets
 import Config from "../../../../Json/config.json";
 
-const TableRow_OAL_REPORT = ({ report, key }) => {
+const TableRow_OAL_REPORT = ({ report, key, updateReportInState }) => {
+
+  
+
   const handleUpdateReport = (reportId, key, value) => {
     const data = {
       reportId,
@@ -42,6 +45,7 @@ const TableRow_OAL_REPORT = ({ report, key }) => {
       .then((data) => {
         if (data.status === "success") {
           toast.success(data.alert, { autoClose: 2000 });
+          updateReportInState(reportId, key, value)
           // setTimeout(() => {
           //   toast.error(data.alert, { autoClose: 2000 });
 
@@ -122,7 +126,11 @@ const TableRow_OAL_REPORT = ({ report, key }) => {
           type="text"
           defaultValue={report.TOB_ADULT.toString()}
           onChange={(e) => {
-            handleUpdateReport(report._id, "TOB_ADULT", parseInt(e.target.value));
+            handleUpdateReport(
+              report._id,
+              "TOB_ADULT",
+              parseInt(e.target.value)
+            );
           }}
           className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
         />

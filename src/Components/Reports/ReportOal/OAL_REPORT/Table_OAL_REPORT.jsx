@@ -125,6 +125,7 @@ const Table_OAL_REPORT = ({ report }) => {
     }
   }, [processingreport_template, report_template]);
 
+  //
   const handleAddNewRecord = () => {
     if (!processingreport_template) {
       // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
@@ -150,7 +151,10 @@ const Table_OAL_REPORT = ({ report }) => {
             if (data.status === "success") {
               toast.success(data.alert, { autoClose: 2000 });
               setTimeout(() => {
-                setallreports((prevReports)=>[...prevReports, data.payloaddata])
+                setallreports((prevReports) => [
+                  ...prevReports,
+                  data.payloaddata,
+                ]);
                 // setallreports(data.payloaddata);
                 // console.log(data.payloaddata);
                 // setprocessingallreports(false);
@@ -166,6 +170,31 @@ const Table_OAL_REPORT = ({ report }) => {
           });
       }
     }
+  };
+
+  useEffect(() => {
+    if (!processingreport_template) {
+      // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
+      if (report_template) {
+        
+      }
+    }
+  }, [allreports]);
+
+  const updateReportInState = (reportId, key, value) => {
+    setallreports((prevReports) => {
+      return prevReports.map((report) => {
+        // Check if the current report has the matching _id
+        if (report._id === reportId) {
+          // Update the specified key with the new value
+          return {
+            ...report,
+            [key]: value,
+          };
+        }
+        return report;
+      });
+    });
   };
 
   return (
@@ -223,7 +252,13 @@ const Table_OAL_REPORT = ({ report }) => {
           </thead>
           <tbody class="bg1a-gr2">
             {allreports.map((report, index) => {
-              return <TableRow report={report} key={"OAL-REPORT-" + index} />;
+              return (
+                <TableRow
+                  report={report}
+                  updateReportInState={updateReportInState}
+                  key={"OAL-REPORT-" + index}
+                />
+              );
             })}
           </tbody>
         </table>
