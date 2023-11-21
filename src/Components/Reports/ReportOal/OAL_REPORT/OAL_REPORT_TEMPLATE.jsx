@@ -18,8 +18,9 @@ import { TbReportAnalytics } from "react-icons/tb";
 // Assets
 import Config from "../../../../Json/config.json";
 
-const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
+const OAL_REPORT_TEMPLATE = ({ report_template, loader,report_comments }) => {
   report_template = report_template["report_template"];
+  report_comments = report_comments['report_comments']
   const { processingreport_template, setprocessingreport_template } = loader;
 
   // user states
@@ -163,7 +164,38 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader }) => {
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
+      
       </div>
+      <div className="font-bold flex gap-2 mt-5">
+        {!processingreport_template && <TbReportAnalytics size="24px" />}{" "}
+        {processingreport_template && <MiniLoadingBar />} Comments
+      </div>
+      <hr class="h-px mt-2 bg-gray-200 border-0 dark:bg-a-dark2"></hr>
+      <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
+   
+        <div className="flex items-center gap-2 text-xs">
+          Total FLights{" "}
+          <span className="font-bold text-xs">
+            {!processingreport_template &&
+              report_template &&
+              report_comments["total-flights"]}
+            {processingreport_template && <MiniLoadingBar />}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 text-xs">
+          Total Adults{" "}
+          <span className="font-bold text-xs">
+            {!processingreport_template &&
+              report_template &&
+              report_comments["total-adults"].toString()}
+            {processingreport_template && <MiniLoadingBar />}
+          </span>
+        </div>
+
+      
+      
+      </div>
+      
     </div>
   );
 };

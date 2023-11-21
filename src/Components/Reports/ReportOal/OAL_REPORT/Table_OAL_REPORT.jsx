@@ -29,6 +29,12 @@ const Table_OAL_REPORT = ({ report }) => {
     setselectedreportshift,
   } = report;
 
+  // comments
+  const [report_comments, setreport_comments] = useState({
+    'total-flights': 0,
+    'total-adults': 0
+  })
+
   const [report_template, setreport_template] = useState(null);
   const [processingreport_template, setprocessingreport_template] =
     useState(true);
@@ -176,11 +182,21 @@ const Table_OAL_REPORT = ({ report }) => {
     if (!processingreport_template) {
       // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
       if (report_template) {
-        
+        setreport_comments((comments)=>{
+          return {...comments, 'total-flights': allreports.length}
+        })
+
+        const totalAdults = allreports.reduce((total, flight) => total + flight.TOB_ADULT, 0);
+     
+        setreport_comments((comments)=>{
+          return {...comments, 'total-adults': totalAdults}
+        })
+
       }
     }
   }, [allreports]);
 
+  // this is unprofessional way to do that but will replace it letter
   const updateReportInState = (reportId, key, value) => {
     setallreports((prevReports) => {
       return prevReports.map((report) => {
@@ -201,6 +217,7 @@ const Table_OAL_REPORT = ({ report }) => {
     <>
       <OAL_REPORT_TEMPLATE
         report_template={{ report_template: report_template }}
+        report_comments= {{report_comments:report_comments}}
         loader={{ processingreport_template, setprocessingreport_template }}
       />
       {processingallreports && !allreports && (
