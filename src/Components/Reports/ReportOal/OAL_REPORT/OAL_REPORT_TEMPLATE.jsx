@@ -35,6 +35,8 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader,report_comments }) => {
       DESIGNATION: "ADM",
     };
 
+    // users view
+
     fetch(`${Config["domains"]["serverside"]["development"]}/users/view`, {
       method: "POST",
       headers: {
@@ -71,6 +73,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader,report_comments }) => {
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
         <div className="flex items-center gap-2 text-xs">
           Report Name:{" "}
+          
           <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
@@ -120,8 +123,6 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader,report_comments }) => {
             {!processingfetcing_admslist &&
               admlist.map((adm_staff) => {
                 return <option value={adm_staff._id}>{adm_staff.NAME}</option>;
-                console.log(adm_staff);
-                console.table(adm_staff);
               })}
           </select>
         </div>
@@ -183,11 +184,15 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader,report_comments }) => {
           </span>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          Total Passengers{" "}
+          TOB: {" "}
           <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
-              report_comments["total-adults"].toString()}
+              report_comments["total-adults"].toString()} {" "}
+               {!processingreport_template && " / "}
+                {!processingreport_template &&
+              report_template &&
+              report_comments["total-inf"].toString()}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>

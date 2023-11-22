@@ -18,7 +18,7 @@ import {
 // Assets
 import Config from "../../../../Json/config.json";
 
-const TableRow_OAL_REPORT = ({ report, key, updateReportInState }) => {
+const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteReport }) => {
 
   
 
@@ -69,7 +69,9 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState }) => {
       <td class="border border-a-dark2 uppercase  ">
         <div className="flex items-center justify-center gap-1 px-1 w-full h-full cursor-pointer">
           {/* <MdOutlineAddCircleOutline className="text-lg" /> */}
-          <MdRemoveCircleOutline className="text-lg" />
+          <MdRemoveCircleOutline className="text-lg" onClick={()=>{
+            handleDeleteReport(report._id)
+          }} />
           {/* <MdOutlineControlPointDuplicate className="text-lg" /> */}{" "}
           {/* Not important to add for now */}
         </div>

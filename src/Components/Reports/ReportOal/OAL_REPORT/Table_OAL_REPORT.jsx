@@ -31,9 +31,10 @@ const Table_OAL_REPORT = ({ report }) => {
 
   // comments
   const [report_comments, setreport_comments] = useState({
-    'total-flights': 0,
-    'total-adults': 0
-  })
+    "total-flights": 0,
+    "total-adults": 0,
+    "total-inf": 0,
+  });
 
   const [report_template, setreport_template] = useState(null);
   const [processingreport_template, setprocessingreport_template] =
@@ -178,19 +179,92 @@ const Table_OAL_REPORT = ({ report }) => {
     }
   };
 
+  // handle delete report
+  const handleDeleteReport = (reportID) => {
+
+    // handle processing once template found in the useState
+    if (!processingreport_template) {
+
+      // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
+      if (report_template) {
+        const data = {
+          report_id: reportID,
+        };
+
+        const confirm_for_delete = window.confirm("Are you sure you want to delete this report?");
+        if (!confirm_for_delete) {
+          return false;
+        }
+
+        // return false;
+
+        fetch(
+          `${Config["domains"]["serverside"]["development"]}/report/oalreport/delete`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json", // Specify that you're sending JSON data
+            },
+            body: JSON.stringify(data), // Set the JSON data as the request body
+          }
+        )
+          .then((e) => {
+            return e.json();
+          })
+          .then((data) => {
+            if (data.status === "success") {
+              toast.success(data.alert, { autoClose: 2000 });
+              setTimeout(() => {
+                setallreports((prevReports) => {
+                  return prevReports.filter(
+                    (report) => report._id !== reportID
+                  );
+                });
+                // setallreports(data.payloaddata);
+                // console.log(data.payloaddata);
+                // setprocessingallreports(false);
+              }, 0);
+            } else {
+              // setprocessingallreports(false);
+              toast.error(data.alert, { autoClose: 2000 });
+            }
+
+            // setTimeout(() => {
+
+            // }, 300);
+          });
+      }
+    }
+  };
+
   useEffect(() => {
     if (!processingreport_template) {
       // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
       if (report_template) {
-        setreport_comments((comments)=>{
-          return {...comments, 'total-flights': allreports.length}
-        })
+        setreport_comments((comments) => {
+          return { ...comments, "total-flights": allreports.length };
+        });
 
-        const totalAdults = allreports.reduce((total, flight) => total + flight.TOB_ADULT, 0);
-     
-        setreport_comments((comments)=>{
-          return {...comments, 'total-adults': totalAdults}
-        })
+        const totalAdults = allreports.reduce(
+          (total, flight) => total + flight.TOB_ADULT,
+          0
+        );
+
+        setreport_comments((comments) => {
+          return { ...comments, "total-adults": totalAdults };
+        });
+
+
+        const totalINF = allreports.reduce(
+          (total, flight) => total + flight.TOB_INF,
+          0
+        );
+
+        setreport_comments((comments) => {
+          return { ...comments, "total-inf": totalINF };
+        });
+
+
 
       }
     }
@@ -217,7 +291,7 @@ const Table_OAL_REPORT = ({ report }) => {
     <>
       <OAL_REPORT_TEMPLATE
         report_template={{ report_template: report_template }}
-        report_comments= {{report_comments:report_comments}}
+        report_comments={{ report_comments: report_comments }}
         loader={{ processingreport_template, setprocessingreport_template }}
       />
       {processingallreports && !allreports && (
@@ -273,6 +347,7 @@ const Table_OAL_REPORT = ({ report }) => {
                 <TableRow
                   report={report}
                   updateReportInState={updateReportInState}
+                  handleDeleteReport={handleDeleteReport}
                   key={"OAL-REPORT-" + index}
                 />
               );

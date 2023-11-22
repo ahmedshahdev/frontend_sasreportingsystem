@@ -1,6 +1,5 @@
 // React Import
 import React from "react";
-
 // Other Libraries
 
 // Global Components
@@ -19,7 +18,7 @@ const MenusSidebar = () => {
       {/* Reports Menu */}
       <ReportsMenu />
       {/* Reports Menu */}
-      <ActionsMenu />
+      {/* <ActionsMenu /> */}
     </div>
   );
 };
