@@ -35,7 +35,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Specify that you're sending JSON data
-        },
+        }, 
         body: JSON.stringify(data), // Set the JSON data as the request body
       }
     )

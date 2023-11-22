@@ -183,7 +183,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader,report_comments }) => {
           </span>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          Total Adults{" "}
+          Total Passengers{" "}
           <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
