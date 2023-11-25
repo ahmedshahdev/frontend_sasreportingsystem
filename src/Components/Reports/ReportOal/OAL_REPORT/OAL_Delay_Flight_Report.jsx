@@ -11,16 +11,16 @@ import { MiniLoadingBar } from "../../../Global/Loader/LoadingBar";
 import {
   MdOutlineAddCircleOutline,
   MdRemoveCircleOutline,
-  MdOutlineControlPointDuplicate,
+  MdOutlineControlPointDuplicate
 } from "react-icons/md";
 import { TbReportAnalytics } from "react-icons/tb";
 
 // Assets
 import Config from "../../../../Json/config.json";
 
-const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
+const OAL_DELAY_FLIGHT_REPORT = ({ report_template, loader,report_comments }) => {
   report_template = report_template["report_template"];
-  report_comments = report_comments["report_comments"];
+  report_comments = report_comments['report_comments']
   const { processingreport_template, setprocessingreport_template } = loader;
 
   // user states
@@ -30,6 +30,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
 
   //   fetch report
   useEffect(() => {
+    
     // designation because on the user table we only want target and select to adm this is shift initiative
     const data = {
       DESIGNATION: "ADM",
@@ -63,57 +64,6 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
       });
   }, []);
 
-  useEffect(() => {
-    if (!processingreport_template) {
-      if (report_template) {
-        if (!processingfetcing_admslist) {
-          if (!report_template.SHIFT_MANAGER) {
-          }
-        }
-      }
-    }
-  }, [processingreport_template, report_template, processingfetcing_admslist]);
-
-  const handleUpdateShiftADM = (adm) => {
-    if (adm === "-") {
-      return false;
-    }
-
-    const data = {
-      REPORT_ID: report_template._id,
-      updates: {
-        SHIFT_MANAGER: adm,
-      },
-    };
-    fetch(
-      `${Config["domains"]["serverside"]["development"]}/reporttemplate/update`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Specify that you're sending JSON data
-        },
-        body: JSON.stringify(data), // Set the JSON data as the request body
-      }
-    )
-      .then((e) => {
-        return e.json();
-      })
-      .then((data) => {
-        if (data.status === "success") {
-          toast.success("ADM Assigned FOR The Selected REPORT ");
-          // setprocessingfetcing_admslist(false);
-        } else {
-          // setreport_list([]);
-          toast.error(data.alert, { autoClose: 2000 });
-          // setprocessingfetcing_admslist(false);
-        }
-
-        setTimeout(() => {
-          // setprocessinghandlereport(false);
-        }, 500);
-      });
-  };
-
   return (
     <div className="bg-a-dark p-4 mt-5 rounded-md">
       <div className="font-bold flex gap-2">
@@ -124,6 +74,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
         <div className="flex items-center gap-2 text-xs">
           Report Name:{" "}
+          
           <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
@@ -151,43 +102,30 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
         </div>
         <div className="flex items-center gap-2 text-xs">
           SHIFT Manager:{" "}
-          {!processingfetcing_admslist &&
-            !processingreport_template &&
-            report_template && (
-              <select
-                type="text"
-                className="h-10 rounded-md px-3 text-sm bg-a-dark2 "
-                placeholder="Report Category"
-                value={
-                  !processingfetcing_admslist &&
-                  !processingreport_template &&
-                  report_template &&
-                  report_template.SHIFT_MANAGER &&
-                  report_template.SHIFT_MANAGER._id
-                }
-                onChange={(e) => {
-                  handleUpdateShiftADM(e.target.value);
-                }}
-                disabled={
-                  !processingfetcing_admslist &&
-                  !processingreport_template &&
-                  report_template &&
-                  report_template.SHIFT_MANAGER
-                }
-                // onChange={(e) => {
-                //   setselectedreportshift(e.target.value);
-                // }}
-              >
-                {/* {processinghandlereport && <option>Loading...</option>} */}
-                <option value="-">-</option>
-                {!processingfetcing_admslist &&
-                  admlist.map((adm_staff) => {
-                    return (
-                      <option value={adm_staff._id}>{adm_staff.NAME}</option>
-                    );
-                  })}
-              </select>
-            )}
+          {/* <span className="font-bold text-xs">
+            {!processingreport_template &&
+              report_template &&
+              report_template.SHIFT_MANAGER}
+              {processingreport_template && <MiniLoadingBar/> }
+
+          </span> */}
+              {/* {console.log('I am report: ', report_template.SHIFT_MANAGER)} */}
+          <select
+            type="text"
+            className="h-10 rounded-md px-3 text-sm bg-a-dark2 "
+            placeholder="Report Category"
+            // value={selectedreport && selectedreport.SHIFT}
+            // onChange={(e) => {
+            //   setselectedreportshift(e.target.value);
+            // }}
+          >
+            {/* {processinghandlereport && <option>Loading...</option>} */}
+            <option value="-">-</option>
+            {!processingfetcing_admslist &&
+              admlist.map((adm_staff) => {
+                return <option value={adm_staff._id}>{adm_staff.NAME}</option>;
+              })}
+          </select>
         </div>
         {/* <hr className="dark:bg-a-dark2" /> */}
         <hr class="h-px bg-gray-200 border-0 dark:bg-a-dark2"></hr>
@@ -228,6 +166,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
+      
       </div>
       <div className="font-bold flex gap-2 mt-5">
         {!processingreport_template && <TbReportAnalytics size="24px" />}{" "}
@@ -235,6 +174,7 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
       </div>
       <hr class="h-px mt-2 bg-gray-200 border-0 dark:bg-a-dark2"></hr>
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
+   
         <div className="flex items-center gap-2 text-xs">
           Total FLights{" "}
           <span className="font-bold text-xs">
@@ -245,21 +185,26 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
           </span>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          TOB:{" "}
+          TOB: {" "}
           <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
-              report_comments["total-adults"].toString()}{" "}
-            {!processingreport_template && " / "}
-            {!processingreport_template &&
+              report_comments["total-adults"].toString()} {" "}
+               {!processingreport_template && " / "}
+                {!processingreport_template &&
               report_template &&
               report_comments["total-inf"].toString()}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
+
+      
+      
       </div>
+      
     </div>
   );
 };
-
-export default OAL_REPORT_TEMPLATE;
+ 
+export default OAL_DELAY_FLIGHT_REPORT;
+ 
