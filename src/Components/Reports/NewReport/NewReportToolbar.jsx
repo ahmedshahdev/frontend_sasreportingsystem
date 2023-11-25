@@ -116,6 +116,19 @@ const NewReportToolbar = () => {
         />
       ),
     },
+    "655e830484b1bb397f13ac30": {
+      report_name: "OAL INAD Passenger Report",
+      component: (
+        <OAL_REPORT
+          report={{
+            selectedreport: selectedreport,
+            selectedreportdate: selectedreportdate,
+            selectedreportshift: selectedreportshift,
+            setselectedreportshift: setselectedreportshift
+          }}
+        />
+      ),
+    },
     "6534593abeecf3fbb5d1730a": {
       report_name: "CSM Shift Report",
       component: <ShiftCsm_REPORT />,
