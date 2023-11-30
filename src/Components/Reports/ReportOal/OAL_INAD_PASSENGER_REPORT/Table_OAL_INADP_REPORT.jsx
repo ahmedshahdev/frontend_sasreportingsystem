@@ -41,6 +41,7 @@ const Table_OAL_REPORT = ({ report }) => {
     "remarks-counters-gates": "",
     "counter-closure": "",
     "airport-facilities": "",
+
   });
 
   const [report_template, setreport_template] = useState(null);
@@ -392,6 +393,7 @@ const Table_OAL_REPORT = ({ report }) => {
                 Added By (STAFF)
               </td>
               <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">AIRLINE</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 DEP/ARRV FLIGHTS
               </td>

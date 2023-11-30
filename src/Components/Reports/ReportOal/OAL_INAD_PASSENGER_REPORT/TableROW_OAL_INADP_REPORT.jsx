@@ -95,6 +95,20 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       <td class="border border-a-dark2 uppercase">
         <input
           type="text"
+          maxLength={2}
+          minLength={2}
+          defaultValue={report.AIRLINE}
+          onChange={(e) => {
+            const uppercaseValue = e.target.value.toUpperCase();
+            e.target.value = uppercaseValue;
+            handleUpdateReport(report._id, "AIRLINE", uppercaseValue);
+          }}
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        />
+      </td>
+      <td class="border border-a-dark2 uppercase">
+        <input
+          type="text"
           defaultValue={report.DEP_ARRV_FLIGHT}
           onChange={(e) => {
             handleUpdateReport(report._id, "DEP_ARRV_FLIGHT", e.target.value);
