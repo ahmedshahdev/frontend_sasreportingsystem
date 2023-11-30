@@ -7,7 +7,7 @@ import React from "react";
 import BreadCrumbs from "../../../Global/BreadCrumbs/BreadCrumbs";
 
 // Components
-import Table from "./Table_OAL_REPORT";
+import Table from "./Table_OAL_INADP_REPORT";
 
 // Icons
 import {
@@ -18,11 +18,11 @@ import {
 
 // Assets
 
-const OAL_REPORT = ({ report }) => {
+const REPORT_INIT = ({ report }) => {
   return (
     <div className="w-full">
       {/* Breadcrumb Basic */}
-      <BreadCrumbs list={["Reports", "OAL Report", "Default"]} />
+      <BreadCrumbs list={["Reports", "OAL Report", "INAD PASSENGER"]} />
 
       {/*  */}
 
@@ -34,4 +34,4 @@ const OAL_REPORT = ({ report }) => {
   );
 };
 
-export default OAL_REPORT;
+export default REPORT_INIT;

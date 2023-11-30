@@ -18,9 +18,21 @@ import { TbReportAnalytics } from "react-icons/tb";
 // Assets
 import Config from "../../../../Json/config.json";
 
-const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
+const OAL_REPORT_TEMPLATE = ({
+  report_template,
+  loader,
+  report_comments,
+  manuc,
+  handleUpdateManualComments,
+}) => {
   report_template = report_template["report_template"];
   report_comments = report_comments["report_comments"];
+
+  let setManualComments = manuc["setManualComments"];
+  let manualComments = manuc["manualComments"];
+
+  handleUpdateManualComments =
+    handleUpdateManualComments["handleUpdateManualComments"];
   const { processingreport_template, setprocessingreport_template } = loader;
 
   // user states
@@ -236,26 +248,79 @@ const OAL_REPORT_TEMPLATE = ({ report_template, loader, report_comments }) => {
       <hr class="h-px mt-2 bg-gray-200 border-0 dark:bg-a-dark2"></hr>
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
         <div className="flex items-center gap-2 text-xs">
-          Total FLights{" "}
+          Total INAD PASSENGERS:{" "}
           <span className="font-bold text-xs">
             {!processingreport_template &&
               report_template &&
-              report_comments["total-flights"]}
+              report_comments["total-inad-passengers"]}
             {processingreport_template && <MiniLoadingBar />}
           </span>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          TOB:{" "}
-          <span className="font-bold text-xs">
-            {!processingreport_template &&
-              report_template &&
-              report_comments["total-adults"].toString()}{" "}
-            {!processingreport_template && " / "}
-            {!processingreport_template &&
-              report_template &&
-              report_comments["total-inf"].toString()}
-            {processingreport_template && <MiniLoadingBar />}
-          </span>
+          {/* TOB:{" "} */}
+          {!processingreport_template && report_template && (
+            <div className="w-full">
+              <p className="mb-2">Remarks (Counters and Gates)</p>
+              <textarea
+                type="text"
+                className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
+                defaultValue={manualComments["remarks-counters-gates"]}
+                onChange={(e) => {
+                  setManualComments((prevState) => ({
+                    ...prevState,
+                    "remarks-counters-gates": e.target.value,
+                  }));
+                  handleUpdateManualComments();
+                }}
+                placeholder="Remarks (Counters and Gates):"
+              />
+            </div>
+          )}
+          {processingreport_template && <MiniLoadingBar />}
+        </div>
+        <div className="flex items-center gap-2 text-xs">
+          {/* TOB:{" "} */}
+          {!processingreport_template && report_template && (
+            <div className="w-full">
+              <p className="mb-2">Counter closures (if any delay in initial closing)!</p>
+              <textarea
+                type="text"
+                className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
+                placeholder="Counter closures (if any delay in initial closing):"
+                defaultValue={manualComments["counter-closure"]}
+                onChange={(e) => {
+                  setManualComments((prevState) => ({
+                    ...prevState,
+                    "counter-closure": e.target.value,
+                  }));
+                  handleUpdateManualComments();
+                }}
+              />
+            </div>
+          )}
+          {processingreport_template && <MiniLoadingBar />}
+        </div>
+        <div className="flex items-center gap-2 text-xs">
+          {/* TOB:{" "} */}
+          {!processingreport_template && report_template && (
+            <div className="w-full">
+              <p className="mb-2">Airport Facilities & Equipment Serviceability </p>
+              <textarea
+                type="text"
+                className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
+                placeholder="Airport Facilities & Equipment serviceability:"
+                defaultValue={manualComments["airport-facilities"]}
+                onChange={(e) => {
+                  setManualComments((prevState) => ({
+                    ...prevState,
+                    "airport-facilities": e.target.value,
+                  }));
+                  handleUpdateManualComments();
+                }}
+              />
+            </div>
+          )}
+          {processingreport_template && <MiniLoadingBar />}
         </div>
       </div>
     </div>

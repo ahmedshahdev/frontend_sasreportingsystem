@@ -43,6 +43,9 @@ const Table_OAL_REPORT = ({ report }) => {
   //
   const [allreports, setallreports] = useState(null);
   const [processingallreports, setprocessingallreports] = useState(true);
+  
+    // visibility
+    const [focusReport, setFocusReport] = useState(true);
 
   // fetch report if not found so create it based on data
   useEffect(() => {
@@ -289,11 +292,20 @@ const Table_OAL_REPORT = ({ report }) => {
 
   return (
     <>
+      {!processingallreports && allreports && (
+        <button
+          onClick={()=>setFocusReport(!focusReport)}
+          className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
+        >
+          {focusReport ? 'Focus On Report' : 'View All'}
+        </button>
+      )}
+     {focusReport && 
       <OAL_REPORT_TEMPLATE
         report_template={{ report_template: report_template }}
         report_comments={{ report_comments: report_comments }}
         loader={{ processingreport_template, setprocessingreport_template }}
-      />
+      />}
       {processingallreports && !allreports && (
         <div class="border h-20 items-center  border-a-dark2 flex w-full justify-center mt-5">
           <div className="flex items-center gap-5">

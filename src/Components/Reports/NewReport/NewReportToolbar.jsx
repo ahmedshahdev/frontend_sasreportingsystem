@@ -24,6 +24,7 @@ import INAD_ABY_REPORT from "../ReportVct/INAD_ABY_REPORT/INAD_ABY_REPORT";
 import INAD_OAL_REPORT from "../ReportVct/INAD_OAL_REPORT/INAD_OAL_REPORT";
 import INTERCEPTED_REPORT from "../ReportVct/INTERCEPTED_REPORT/INTERCEPTED_REPORT";
 import ShiftCsm_REPORT from "../ReportCSM/CSM_SHIFT_REPORT/CSM_SHIFT_REPORT";
+import OAL_INADP_REPORT from  "../ReportOal/OAL_INAD_PASSENGER_REPORT/OAL_INADP_REPORT.jsx"
 
 // Icons
 
@@ -119,7 +120,7 @@ const NewReportToolbar = () => {
     "655e830484b1bb397f13ac30": {
       report_name: "OAL INAD Passenger Report",
       component: (
-        <OAL_REPORT
+        <OAL_INADP_REPORT
           report={{
             selectedreport: selectedreport,
             selectedreportdate: selectedreportdate,

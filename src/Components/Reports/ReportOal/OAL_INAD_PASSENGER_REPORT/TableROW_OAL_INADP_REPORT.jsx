@@ -30,7 +30,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
     };
 
     fetch(
-      `${Config["domains"]["serverside"]["development"]}/report/oalreport/update`,
+      `${Config["domains"]["serverside"]["development"]}/report/oalinadpreport/update`,
       {
         method: "POST",
         headers: {
@@ -85,9 +85,9 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       <td class="border border-a-dark2 uppercase">
         <input
           type="text"
-          defaultValue={report.FLT_NO}
+          defaultValue={report.NAME}
           onChange={(e) => {
-            handleUpdateReport(report._id, "FLT_NO", e.target.value);
+            handleUpdateReport(report._id, "NAME", e.target.value);
           }}
           className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
         />
@@ -95,44 +95,9 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       <td class="border border-a-dark2 uppercase">
         <input
           type="text"
-          defaultValue={report.DEST}
+          defaultValue={report.DEP_ARRV_FLIGHT}
           onChange={(e) => {
-            handleUpdateReport(report._id, "DEST", e.target.value);
-          }}
-          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
-        />
-      </td>
-      <td class="border border-a-dark2 uppercase">
-        {/* {report.STD} */}
-        <input
-          type="date"
-          defaultValue={new Date(report.STD).toISOString().split("T")[0]}
-          onChange={(e) => {
-            handleUpdateReport(report._id, "STD", e.target.value);
-          }}
-          className="px-2 w-24  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
-        />
-      </td>
-      <td class="border border-a-dark2 uppercase">
-        <input
-          type="date"
-          defaultValue={new Date(report.ATD).toISOString().split("T")[0]}
-          onChange={(e) => {
-            handleUpdateReport(report._id, "ATD", e.target.value);
-          }}
-          className="px-2 w-24  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
-        />
-      </td>
-      <td class="border border-a-dark2 uppercase">
-        <input
-          type="text"
-          defaultValue={report.TOB_ADULT.toString()}
-          onChange={(e) => {
-            handleUpdateReport(
-              report._id,
-              "TOB_ADULT",
-              parseInt(e.target.value)
-            );
+            handleUpdateReport(report._id, "DEP_ARRV_FLIGHT", e.target.value);
           }}
           className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
         />
@@ -140,13 +105,54 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       <td class="border border-a-dark2 uppercase">
         <input
           type="text"
-          defaultValue={report.TOB_INF.toString()}
+          defaultValue={report.SECTOR}
           onChange={(e) => {
-            handleUpdateReport(report._id, "TOB_INF", parseInt(e.target.value));
+            handleUpdateReport(report._id, "SECTOR", e.target.value);
           }}
           className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
         />
       </td>
+      <td class="border border-a-dark2 uppercase">
+        <input
+          type="text"
+          defaultValue={report.NATIONALITY}
+          onChange={(e) => {
+            handleUpdateReport(report._id, "NATIONALITY", e.target.value);
+          }}
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        />
+      </td>
+      <td class="border border-a-dark2 uppercase">
+        <input
+          type="text"
+          defaultValue={report.PNR}
+          onChange={(e) => {
+            handleUpdateReport(report._id, "PNR", e.target.value);
+          }}
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        />
+      </td>
+      <td class="border border-a-dark2 uppercase">
+        <input
+          type="text"
+          defaultValue={report.REMARKS}
+          onChange={(e) => {
+            handleUpdateReport(report._id, "REMARKS", e.target.value);
+          }}
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        />
+      </td>
+      <td class="border border-a-dark2 uppercase">
+        <input
+          type="text"
+          defaultValue={report.ACTION}
+          onChange={(e) => {
+            handleUpdateReport(report._id, "ACTION", e.target.value);
+          }}
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        />
+      </td>
+
       <td class="border border-a-dark2 uppercase">
         <input
           defaultValue={new Date(report.DATE).toISOString().split("T")[0]}
