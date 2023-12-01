@@ -34,6 +34,7 @@ const Table_OAL_REPORT = ({ report }) => {
     "total-inad-passengers": 0,
     "total-adults": 0,
     "total-inf": 0,
+    "airlines-records-breakdown-count": {},
   });
 
   // manual comments
@@ -41,7 +42,6 @@ const Table_OAL_REPORT = ({ report }) => {
     "remarks-counters-gates": "",
     "counter-closure": "",
     "airport-facilities": "",
-
   });
 
   const [report_template, setreport_template] = useState(null);
@@ -274,12 +274,12 @@ const Table_OAL_REPORT = ({ report }) => {
           .then((data) => {
             if (data.status === "success") {
               toast.success(data.alert, { autoClose: 2000 });
+              setallreports((prevReports) => {
+                return prevReports.filter(
+                  (report) => report._id !== reportID
+                );
+              });
               setTimeout(() => {
-                setallreports((prevReports) => {
-                  return prevReports.filter(
-                    (report) => report._id !== reportID
-                  );
-                });
                 // setallreports(data.payloaddata);
                 // console.log(data.payloaddata);
                 // setprocessingallreports(false);
@@ -301,26 +301,31 @@ const Table_OAL_REPORT = ({ report }) => {
     if (!processingreport_template) {
       // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
       if (report_template) {
+        // ! Count total Flights
         setreport_comments((comments) => {
           return { ...comments, "total-inad-passengers": allreports.length };
         });
 
-        const totalAdults = allreports.reduce(
-          (total, flight) => total + flight.TOB_ADULT,
-          0
-        );
+        // ! COUNT RECORDS BY AIRLINE
+        // Create an object to store the counts
+        const airlineCounts = {};
 
-        setreport_comments((comments) => {
-          return { ...comments, "total-adults": totalAdults };
+        // Iterate through the flights and count occurrences
+        allreports.forEach((report) => {
+          const airlineCode = report.AIRLINE.toUpperCase(); // Ensure case-insensitive matching
+          if (airlineCode != "") {
+            if (airlineCounts[airlineCode]) {
+              // If the airline code already exists, increment the count
+              airlineCounts[airlineCode]++;
+            } else {
+              // If the airline code doesn't exist, initialize the count to 1
+              airlineCounts[airlineCode] = 1;
+            }
+          }
         });
 
-        const totalINF = allreports.reduce(
-          (total, flight) => total + flight.TOB_INF,
-          0
-        );
-
         setreport_comments((comments) => {
-          return { ...comments, "total-inf": totalINF };
+          return { ...comments, "airlines-records-breakdown-count": airlineCounts };
         });
       }
     }
@@ -347,24 +352,26 @@ const Table_OAL_REPORT = ({ report }) => {
     <>
       {!processingallreports && allreports && (
         <button
-          onClick={()=>setFocusReport(!focusReport)}
+          onClick={() => setFocusReport(!focusReport)}
           className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
         >
-          {focusReport ? 'Focus On Report' : 'View All'}
+          {focusReport ? "Focus On Report" : "View All"}
         </button>
       )}
-     {focusReport && <OAL_REPORT_TEMPLATE
-        report_template={{ report_template: report_template }}
-        report_comments={{ report_comments: report_comments }}
-        manuc={{
-          setManualComments: setManualComments,
-          manualComments: manualComments,
-        }}
-        handleUpdateManualComments={{
-          handleUpdateManualComments: handleUpdateManualComments,
-        }}
-        loader={{ processingreport_template, setprocessingreport_template }}
-      />}
+      {focusReport && (
+        <OAL_REPORT_TEMPLATE
+          report_template={{ report_template: report_template }}
+          report_comments={{ report_comments: report_comments }}
+          manuc={{
+            setManualComments: setManualComments,
+            manualComments: manualComments,
+          }}
+          handleUpdateManualComments={{
+            handleUpdateManualComments: handleUpdateManualComments,
+          }}
+          loader={{ processingreport_template, setprocessingreport_template }}
+        />
+      )}
       {processingallreports && !allreports && (
         <div class="border h-20 items-center  border-a-dark2 flex w-full justify-center mt-5">
           <div className="flex items-center gap-5">
@@ -393,7 +400,9 @@ const Table_OAL_REPORT = ({ report }) => {
                 Added By (STAFF)
               </td>
               <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">AIRLINE</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                AIRLINE
+              </td>
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 DEP/ARRV FLIGHTS
               </td>

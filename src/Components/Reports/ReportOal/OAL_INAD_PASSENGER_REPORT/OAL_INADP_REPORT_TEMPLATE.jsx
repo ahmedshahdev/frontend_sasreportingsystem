@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // Other Libraries
 import { toast } from "react-toastify";
+import { Chart } from "react-google-charts";
 
 // Global Components
 import { MiniLoadingBar } from "../../../Global/Loader/LoadingBar";
@@ -247,14 +248,40 @@ const OAL_REPORT_TEMPLATE = ({
       </div>
       <hr class="h-px mt-2 bg-gray-200 border-0 dark:bg-a-dark2"></hr>
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
-        <div className="flex items-center gap-2 text-xs">
-          Total INAD PASSENGERS:{" "}
-          <span className="font-bold text-xs">
-            {!processingreport_template &&
-              report_template &&
-              report_comments["total-inad-passengers"]}
-            {processingreport_template && <MiniLoadingBar />}
-          </span>
+        <div className="flex gap-2 text-xs flex-col">
+          <div>
+            Total INAD PASSENGERS:{" "}
+            <span className="font-bold text-xs">
+              {!processingreport_template &&
+                report_template &&
+                report_comments["total-inad-passengers"]}
+              {processingreport_template && <MiniLoadingBar />}
+            </span>
+          </div>
+          {!processingreport_template && report_template && ( <div className="grid grid-cols-8 text-md gap-3">
+            {Object.entries(
+              report_comments["airlines-records-breakdown-count"]
+            ).map(([airlineCode, count]) => (
+              <div className="bg-a-dark2 p-3 rounded flex gap-2">
+                <p className="">{airlineCode}</p>
+                <p>:</p>
+                <p>{count}</p>
+              </div>
+            ))}
+          </div> )}
+          <Chart
+      chartType="PieChart"
+      data={[
+        ["Task", "Hours per Day"],
+        ["Work", 11],
+        ["Eat", 2],
+        ["Commute", 2],
+        ["Watch TV", 2],
+        ["Sleep", 7],
+      ]}
+      width={"100%"}
+      height={"400px"}
+    />
         </div>
         <div className="flex items-center gap-2 text-xs">
           {/* TOB:{" "} */}
@@ -282,7 +309,9 @@ const OAL_REPORT_TEMPLATE = ({
           {/* TOB:{" "} */}
           {!processingreport_template && report_template && (
             <div className="w-full">
-              <p className="mb-2">Counter closures (if any delay in initial closing)!</p>
+              <p className="mb-2">
+                Counter closures (if any delay in initial closing)!
+              </p>
               <textarea
                 type="text"
                 className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
@@ -304,7 +333,9 @@ const OAL_REPORT_TEMPLATE = ({
           {/* TOB:{" "} */}
           {!processingreport_template && report_template && (
             <div className="w-full">
-              <p className="mb-2">Airport Facilities & Equipment Serviceability </p>
+              <p className="mb-2">
+                Airport Facilities & Equipment Serviceability{" "}
+              </p>
               <textarea
                 type="text"
                 className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "

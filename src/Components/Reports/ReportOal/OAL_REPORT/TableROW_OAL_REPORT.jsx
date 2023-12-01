@@ -3,6 +3,8 @@ import React from "react";
 
 // Other Libraries
 import { toast } from "react-toastify";
+import { Chart } from "react-google-charts";
+
 
 // Global Components
 
@@ -65,7 +67,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
   };
 
   return (
-    <tr key={key}>
+    <tr key={report._id}>
       <td class="border border-a-dark2 uppercase  ">
         <div className="flex items-center justify-center gap-1 px-1 w-full h-full cursor-pointer">
           {/* <MdOutlineAddCircleOutline className="text-lg" /> */}
