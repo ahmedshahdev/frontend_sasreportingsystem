@@ -82,13 +82,19 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
 }
 
   return (
-    <tr key={report._id} className={handleDateExceedValidity(report.DATE) && "blanking__popup"}>
+    <tr
+      key={report._id}
+      className={handleDateExceedValidity(report.DATE) && "blanking__popup"}
+    >
       <td class="border border-a-dark2 uppercase  ">
         <div className="flex items-center justify-center gap-1 px-1 w-full h-full cursor-pointer">
           {/* <MdOutlineAddCircleOutline className="text-lg" /> */}
-          <MdRemoveCircleOutline className="text-lg" onClick={()=>{
-            handleDeleteReport(report._id)
-          }} />
+          <MdRemoveCircleOutline
+            className="text-lg"
+            onClick={() => {
+              handleDeleteReport(report._id);
+            }}
+          />
           {/* <MdOutlineControlPointDuplicate className="text-lg" /> */}{" "}
           {/* Not important to add for now */}
         </div>
@@ -98,6 +104,25 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
           type="text"
           className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
         />
+      </td>
+      <td class="border border-a-dark2 uppercase">
+        <select
+          className="px-2 w-28  box-border bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1   bg-a-dark"
+          defaultValue={report.STATUS}
+          onChange={(e) => {
+            handleUpdateReport(report._id, "STATUS", e.target.value);
+          }}
+        >
+          <option className="bg-a-dark" value="INITIAL">
+            Pending {/* Actually the initial is equal pending  */}
+          </option>
+          <option className="bg-a-dark" value="UNDER_INVESTIGATION">
+            UNDER INVESTIGATION
+          </option>
+          <option className="bg-a-dark" value="CLEAR">
+            CLEAR
+          </option>
+        </select>
       </td>
       <td class="border border-a-dark2 uppercase">
         <input
@@ -185,7 +210,6 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       </td>
 
       <td class="border border-a-dark2 uppercase">
-
         <input
           defaultValue={new Date(report.DATE).toISOString().split("T")[0]}
           type="date"

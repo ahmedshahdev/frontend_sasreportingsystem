@@ -108,7 +108,6 @@ const Table_OAL_REPORT = ({ report }) => {
   // manual comments handling
   useEffect(() => {
     if (report_template) {
- 
       if (report_template["COMMENTS"].length == 0) {
         handleUpdateManualComments();
       } else {
@@ -118,7 +117,6 @@ const Table_OAL_REPORT = ({ report }) => {
   }, [report_template]);
 
   const handleUpdateManualComments = () => {
-    console.log(manualComments)
     const data = {
       REPORT_ID: report_template._id,
       updates: {
@@ -399,6 +397,7 @@ const Table_OAL_REPORT = ({ report }) => {
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 Added By (STAFF)
               </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">STATUS</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 AIRLINE

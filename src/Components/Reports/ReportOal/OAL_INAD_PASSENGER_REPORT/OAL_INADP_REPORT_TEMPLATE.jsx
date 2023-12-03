@@ -292,7 +292,11 @@ const OAL_REPORT_TEMPLATE = ({
                       ...prevState,
                       "remarks-counters-gates": e.target.value,
                     }));
-                    handleUpdateManualComments();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleUpdateManualComments();
+                    }
                   }}
                   placeholder="Remarks (Counters and Gates):"
                 />
@@ -312,12 +316,23 @@ const OAL_REPORT_TEMPLATE = ({
                   className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
                   placeholder="Counter closures (if any delay in initial closing):"
                   defaultValue={manualComments["counter-closure"]}
+                  // onChange={(e) => {
+                  //   setManualComments((prevState) => ({
+                  //     ...prevState,
+                  //     "counter-closure": e.target.value,
+                  //   }));
+                  //   handleUpdateManualComments();
+                  // }}
                   onChange={(e) => {
                     setManualComments((prevState) => ({
                       ...prevState,
                       "counter-closure": e.target.value,
                     }));
-                    handleUpdateManualComments();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleUpdateManualComments();
+                    }
                   }}
                 />
               </div>
@@ -336,12 +351,23 @@ const OAL_REPORT_TEMPLATE = ({
                   className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
                   placeholder="Airport Facilities & Equipment serviceability:"
                   defaultValue={manualComments["airport-facilities"]}
+                  // onChange={(e) => {
+                  //   setManualComments((prevState) => ({
+                  //     ...prevState,
+                  //     "airport-facilities": e.target.value,
+                  //   }));
+                  //   handleUpdateManualComments();
+                  // }}
                   onChange={(e) => {
                     setManualComments((prevState) => ({
                       ...prevState,
                       "airport-facilities": e.target.value,
                     }));
-                    handleUpdateManualComments();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleUpdateManualComments();
+                    }
                   }}
                 />
               </div>
