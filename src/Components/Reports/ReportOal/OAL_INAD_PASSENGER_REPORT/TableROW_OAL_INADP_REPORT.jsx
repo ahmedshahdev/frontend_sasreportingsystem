@@ -64,8 +64,25 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       });
   };
 
+  const handleDateExceedValidity =(reportDateStr)=> {
+    // Convert the report date string to a Date object
+    const reportDate = new Date(reportDateStr);
+
+    // Current date
+    const currentDate = new Date();
+
+    // Calculate the difference in milliseconds
+    const dateDifference = currentDate - reportDate;
+
+    // Calculate the difference in days
+    const daysDifference = Math.floor(dateDifference / (1000 * 60 * 60 * 24));
+
+    // Check if the difference is greater than or equal to two days
+    return daysDifference >= 2;
+}
+
   return (
-    <tr key={report._id}>
+    <tr key={report._id} className={handleDateExceedValidity(report.DATE) && "blanking__popup"}>
       <td class="border border-a-dark2 uppercase  ">
         <div className="flex items-center justify-center gap-1 px-1 w-full h-full cursor-pointer">
           {/* <MdOutlineAddCircleOutline className="text-lg" /> */}
@@ -168,6 +185,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       </td>
 
       <td class="border border-a-dark2 uppercase">
+
         <input
           defaultValue={new Date(report.DATE).toISOString().split("T")[0]}
           type="date"

@@ -7,6 +7,7 @@ import { Chart } from "react-google-charts";
 
 // Global Components
 import { MiniLoadingBar } from "../../../Global/Loader/LoadingBar";
+import Chart_STAT_INAD_PAX from "./INTERNAL/OAL_INADP_REPORT_TEMPLATE/Chart_STAT_INAD_PAX";
 
 // Icons
 import {
@@ -248,7 +249,7 @@ const OAL_REPORT_TEMPLATE = ({
       </div>
       <hr class="h-px mt-2 bg-gray-200 border-0 dark:bg-a-dark2"></hr>
       <div className="grid grid-cols-2 gap-3 x-5 w-full   h-auto mt-5">
-        <div className="flex gap-2 text-xs flex-col">
+        <div className="flex gap-5 text-xs flex-col">
           <div>
             Total INAD PASSENGERS:{" "}
             <span className="font-bold text-xs">
@@ -258,100 +259,95 @@ const OAL_REPORT_TEMPLATE = ({
               {processingreport_template && <MiniLoadingBar />}
             </span>
           </div>
-          {!processingreport_template && report_template && ( <div className="grid grid-cols-8 text-md gap-3">
-            {Object.entries(
-              report_comments["airlines-records-breakdown-count"]
-            ).map(([airlineCode, count]) => (
-              <div className="bg-a-dark2 p-3 rounded flex gap-2">
-                <p className="">{airlineCode}</p>
-                <p>:</p>
-                <p>{count}</p>
+          {!processingreport_template && report_template && (
+            <div className="grid grid-cols-8 text-md gap-3">
+              {Object.entries(
+                report_comments["airlines-records-breakdown-count"]
+              ).map(([airlineCode, count]) => (
+                <div className="bg-a-dark2 p-3 rounded flex gap-2">
+                  <p className="">{airlineCode}</p>
+                  <p>:</p>
+                  <p>{count}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {!processingreport_template && report_template && (
+            <Chart_STAT_INAD_PAX report_comments={report_comments} />
+          )}
+        </div>
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-2 text-xs">
+            {/* TOB:{" "} */}
+            {!processingreport_template && report_template && (
+              <div className="w-full">
+                <p className="mb-2">Remarks (Counters and Gates)</p>
+                <textarea
+                  type="text"
+                  className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
+                  defaultValue={manualComments["remarks-counters-gates"]}
+                  onChange={(e) => {
+                    setManualComments((prevState) => ({
+                      ...prevState,
+                      "remarks-counters-gates": e.target.value,
+                    }));
+                    handleUpdateManualComments();
+                  }}
+                  placeholder="Remarks (Counters and Gates):"
+                />
               </div>
-            ))}
-          </div> )}
-          <Chart
-      chartType="PieChart"
-      data={[
-        ["Task", "Hours per Day"],
-        ["Work", 11],
-        ["Eat", 2],
-        ["Commute", 2],
-        ["Watch TV", 2],
-        ["Sleep", 7],
-      ]}
-      width={"100%"}
-      height={"400px"}
-    />
-        </div>
-        <div className="flex items-center gap-2 text-xs">
-          {/* TOB:{" "} */}
-          {!processingreport_template && report_template && (
-            <div className="w-full">
-              <p className="mb-2">Remarks (Counters and Gates)</p>
-              <textarea
-                type="text"
-                className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
-                defaultValue={manualComments["remarks-counters-gates"]}
-                onChange={(e) => {
-                  setManualComments((prevState) => ({
-                    ...prevState,
-                    "remarks-counters-gates": e.target.value,
-                  }));
-                  handleUpdateManualComments();
-                }}
-                placeholder="Remarks (Counters and Gates):"
-              />
-            </div>
-          )}
-          {processingreport_template && <MiniLoadingBar />}
-        </div>
-        <div className="flex items-center gap-2 text-xs">
-          {/* TOB:{" "} */}
-          {!processingreport_template && report_template && (
-            <div className="w-full">
-              <p className="mb-2">
-                Counter closures (if any delay in initial closing)!
-              </p>
-              <textarea
-                type="text"
-                className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
-                placeholder="Counter closures (if any delay in initial closing):"
-                defaultValue={manualComments["counter-closure"]}
-                onChange={(e) => {
-                  setManualComments((prevState) => ({
-                    ...prevState,
-                    "counter-closure": e.target.value,
-                  }));
-                  handleUpdateManualComments();
-                }}
-              />
-            </div>
-          )}
-          {processingreport_template && <MiniLoadingBar />}
-        </div>
-        <div className="flex items-center gap-2 text-xs">
-          {/* TOB:{" "} */}
-          {!processingreport_template && report_template && (
-            <div className="w-full">
-              <p className="mb-2">
-                Airport Facilities & Equipment Serviceability{" "}
-              </p>
-              <textarea
-                type="text"
-                className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
-                placeholder="Airport Facilities & Equipment serviceability:"
-                defaultValue={manualComments["airport-facilities"]}
-                onChange={(e) => {
-                  setManualComments((prevState) => ({
-                    ...prevState,
-                    "airport-facilities": e.target.value,
-                  }));
-                  handleUpdateManualComments();
-                }}
-              />
-            </div>
-          )}
-          {processingreport_template && <MiniLoadingBar />}
+            )}
+            {processingreport_template && <MiniLoadingBar />}
+          </div>
+          <div className="flex items-center gap-2 text-xs">
+            {/* TOB:{" "} */}
+            {!processingreport_template && report_template && (
+              <div className="w-full">
+                <p className="mb-2">
+                  Counter closures (if any delay in initial closing)!
+                </p>
+                <textarea
+                  type="text"
+                  className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
+                  placeholder="Counter closures (if any delay in initial closing):"
+                  defaultValue={manualComments["counter-closure"]}
+                  onChange={(e) => {
+                    setManualComments((prevState) => ({
+                      ...prevState,
+                      "counter-closure": e.target.value,
+                    }));
+                    handleUpdateManualComments();
+                  }}
+                />
+              </div>
+            )}
+            {processingreport_template && <MiniLoadingBar />}
+          </div>
+          <div className="flex items-center gap-2 text-xs">
+            {/* TOB:{" "} */}
+            {!processingreport_template && report_template && (
+              <div className="w-full">
+                <p className="mb-2">
+                  Airport Facilities & Equipment Serviceability{" "}
+                </p>
+                <textarea
+                  type="text"
+                  className="h-20 rounded-md w-full p-3 text-sm bg-a-dark2 "
+                  placeholder="Airport Facilities & Equipment serviceability:"
+                  defaultValue={manualComments["airport-facilities"]}
+                  onChange={(e) => {
+                    setManualComments((prevState) => ({
+                      ...prevState,
+                      "airport-facilities": e.target.value,
+                    }));
+                    handleUpdateManualComments();
+                  }}
+                />
+              </div>
+            )}
+            {processingreport_template && <MiniLoadingBar />}
+          </div>
         </div>
       </div>
     </div>

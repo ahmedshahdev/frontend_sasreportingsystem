@@ -108,7 +108,7 @@ const Table_OAL_REPORT = ({ report }) => {
   // manual comments handling
   useEffect(() => {
     if (report_template) {
-      console.clear();
+ 
       if (report_template["COMMENTS"].length == 0) {
         handleUpdateManualComments();
       } else {
@@ -118,6 +118,7 @@ const Table_OAL_REPORT = ({ report }) => {
   }, [report_template]);
 
   const handleUpdateManualComments = () => {
+    console.log(manualComments)
     const data = {
       REPORT_ID: report_template._id,
       updates: {
@@ -176,7 +177,6 @@ const Table_OAL_REPORT = ({ report }) => {
               toast.success(data.alert, { autoClose: 2000 });
               setTimeout(() => {
                 setallreports(data.payloaddata);
-                console.log(data.payloaddata);
                 setprocessingallreports(false);
               }, 0);
             } else {

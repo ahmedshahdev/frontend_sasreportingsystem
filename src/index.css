@@ -68,3 +68,14 @@ body {
       width: 100%;
    }
 }
+
+.blanking__popup {
+   background-color: rgb(233, 69, 69);
+   animation: infinite 3s linear blanking__popup_keyframes;
+}
+
+@keyframes blanking__popup_keyframes {
+   50% {
+      background-color: transparent;
+   }
+}
