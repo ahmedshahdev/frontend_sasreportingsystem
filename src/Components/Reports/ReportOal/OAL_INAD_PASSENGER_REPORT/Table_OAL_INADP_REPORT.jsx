@@ -295,6 +295,16 @@ const Table_OAL_REPORT = ({ report }) => {
     }
   };
 
+  // handle delete report in state
+  // ? this is once we are updating status of inad passenger report so if the status is clear so on that case we need to remove form state as well that perticular report 
+  const handleDeleteReportInState = (reportID)=>{
+    setallreports((prevReports) => {
+      return prevReports.filter(
+        (report) => report._id !== reportID
+      );
+    });
+  }
+
   useEffect(() => {
     if (!processingreport_template) {
       // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
@@ -386,9 +396,57 @@ const Table_OAL_REPORT = ({ report }) => {
             <MdOutlineAddCircleOutline className="text-lg" />
           </button>
         )}
+        {!processingallreports && allreports && (
+          <button
+            // onClick={handleAddNewRecord}
+            className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
+          >
+            Clear previous shift record
+          </button>
+        )}
       </div>
       {!processingallreports && allreports && (
         <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
+          <thead className="bg-gradient-to-r from-a-pink to-a-blue text-a-gray">
+            <tr className="bg-a-dark">
+              <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
+                {/* for action */}
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                Added By (STAFF)
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">STATUS</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                AIRLINE
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                DEP/ARRV FLIGHTS
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                Sector
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                Nationality
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">PNR</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                REMARKS
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                ACTIONS
+              </td>
+
+              <td class="border border-a-dark2  text-xs uppercase p-1">Date</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">Time</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                Added Date
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                Added Time
+              </td>
+            </tr>
+          </thead>
           <thead className="bg-gradient-to-r from-a-pink to-a-blue text-a-gray">
             <tr className="bg-a-dark">
               <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
@@ -434,6 +492,7 @@ const Table_OAL_REPORT = ({ report }) => {
               return (
                 <TableRow
                   report={report}
+                  handleDeleteReportInState={handleDeleteReportInState}
                   updateReportInState={updateReportInState}
                   handleDeleteReport={handleDeleteReport}
                   key={"OAL-REPORT-" + index}

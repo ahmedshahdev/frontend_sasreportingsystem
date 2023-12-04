@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Inter', sans-serif;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+   font-family: 'Inter', sans-serif;
+   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 body {
@@ -15,51 +15,52 @@ body {
    width: 7px;
    height: 7px;
 }
+
 ::-webkit-scrollbar-thumb {
    background-color: #2d2d2d;
 }
 
 
 .spinner-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    width: 90px;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    box-sizing: 1px 1px 5px #0005;
- }
- 
- .spinner {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: radial-gradient(farthest-side, #59BFB6 94%, #0000) top/9px 9px no-repeat,
-       conic-gradient(#0000 30%, #EF8787);
-    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
-    animation: spinner-c7wet2 1s infinite linear;
- }
- 
- .spinner-mini {
-    width: 26px;
-    height: 26px;
- }
- 
- @keyframes spinner-c7wet2 {
-    100% {
-       transform: rotate(1turn);
-    }
- }
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1000;
+   width: 90px;
+   aspect-ratio: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: white;
+   border: 1px solid #ddd;
+   border-radius: 50%;
+   box-sizing: 1px 1px 5px #0005;
+}
+
+.spinner {
+   width: 56px;
+   height: 56px;
+   border-radius: 50%;
+   background: radial-gradient(farthest-side, #59BFB6 94%, #0000) top/9px 9px no-repeat,
+      conic-gradient(#0000 30%, #EF8787);
+   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
+   animation: spinner-c7wet2 1s infinite linear;
+}
+
+.spinner-mini {
+   width: 26px;
+   height: 26px;
+}
+
+@keyframes spinner-c7wet2 {
+   100% {
+      transform: rotate(1turn);
+   }
+}
 
 
- .main__container {
+.main__container {
    width: calc(100% - 13rem);
 }
 

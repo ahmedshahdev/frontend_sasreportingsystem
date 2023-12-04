@@ -2,11 +2,11 @@
     "domains": {
         "clientside": {
             "production": "",
-            "development": "http://10.7.26.120:3000"
+            "development": "http://10.7.26.19:3000"
         },
         "serverside": {
             "production": "",
-            "development": "http://10.7.26.120:5000"
+            "development": "http://10.7.26.19:5000"
         }
     }
 }

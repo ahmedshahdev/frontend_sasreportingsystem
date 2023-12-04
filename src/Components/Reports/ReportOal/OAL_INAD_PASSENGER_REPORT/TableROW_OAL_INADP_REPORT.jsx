@@ -18,10 +18,13 @@ import {
 // Assets
 import Config from "../../../../Json/config.json";
 
-const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteReport }) => {
-
-  
-
+const TableRow_OAL_REPORT = ({
+  report,
+  key,
+  updateReportInState,
+  handleDeleteReport,
+  handleDeleteReportInState,
+}) => {
   const handleUpdateReport = (reportId, key, value) => {
     const data = {
       reportId,
@@ -35,7 +38,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Specify that you're sending JSON data
-        }, 
+        },
         body: JSON.stringify(data), // Set the JSON data as the request body
       }
     )
@@ -45,7 +48,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       .then((data) => {
         if (data.status === "success") {
           toast.success(data.alert, { autoClose: 2000 });
-          updateReportInState(reportId, key, value)
+          updateReportInState(reportId, key, value);
           // setTimeout(() => {
           //   toast.error(data.alert, { autoClose: 2000 });
 
@@ -64,7 +67,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
       });
   };
 
-  const handleDateExceedValidity =(reportDateStr)=> {
+  const handleDateExceedValidity = (reportDateStr) => {
     // Convert the report date string to a Date object
     const reportDate = new Date(reportDateStr);
 
@@ -79,7 +82,7 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
 
     // Check if the difference is greater than or equal to two days
     return daysDifference >= 2;
-}
+  };
 
   return (
     <tr
@@ -110,7 +113,21 @@ const TableRow_OAL_REPORT = ({ report, key, updateReportInState, handleDeleteRep
           className="px-2 w-28  box-border bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1   bg-a-dark"
           defaultValue={report.STATUS}
           onChange={(e) => {
-            handleUpdateReport(report._id, "STATUS", e.target.value);
+            if (e.target.value === "CLEAR") {
+              const confirm = window.confirm(
+                "ARE you sure you wana solve this case"
+              );
+
+              if (confirm) {
+             
+                handleUpdateReport(report._id, "STATUS", e.target.value);
+                handleDeleteReportInState(report._id); 
+              } else {
+                e.target.value = report.STATUS
+              }
+            } else {
+              handleUpdateReport(report._id, "STATUS", e.target.value);
+            }
           }}
         >
           <option className="bg-a-dark" value="INITIAL">
