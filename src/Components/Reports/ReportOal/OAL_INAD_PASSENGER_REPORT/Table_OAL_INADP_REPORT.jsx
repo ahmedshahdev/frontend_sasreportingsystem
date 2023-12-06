@@ -401,7 +401,9 @@ const Table_OAL_REPORT = ({ report }) => {
             // onClick={handleAddNewRecord}
             className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
           >
-            Clear previous shift record
+            <MiniLoadingBar />
+            <span className="margin-right:5px"> Pending shift record</span>
+           
           </button>
         )}
       </div>
