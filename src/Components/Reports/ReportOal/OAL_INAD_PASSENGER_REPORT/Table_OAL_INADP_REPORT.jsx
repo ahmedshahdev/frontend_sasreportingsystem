@@ -417,6 +417,7 @@ const Table_OAL_REPORT = ({ report }) => {
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 Added By (STAFF)
               </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">CREATED UNDER</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">STATUS</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">
@@ -449,46 +450,7 @@ const Table_OAL_REPORT = ({ report }) => {
               </td>
             </tr>
           </thead>
-          <thead className="bg-gradient-to-r from-a-pink to-a-blue text-a-gray">
-            <tr className="bg-a-dark">
-              <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
-                {/* for action */}
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Added By (STAFF)
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">STATUS</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                AIRLINE
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                DEP/ARRV FLIGHTS
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Sector
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Nationality
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">PNR</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                REMARKS
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                ACTIONS
-              </td>
 
-              <td class="border border-a-dark2  text-xs uppercase p-1">Date</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">Time</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Added Date
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Added Time
-              </td>
-            </tr>
-          </thead>
           <tbody class="bg1a-gr2">
             {allreports.map((report, index) => {
               return (

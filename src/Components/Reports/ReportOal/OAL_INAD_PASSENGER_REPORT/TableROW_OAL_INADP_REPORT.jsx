@@ -109,6 +109,19 @@ const TableRow_OAL_REPORT = ({
         />
       </td>
       <td class="border border-a-dark2 uppercase">
+        {/* {console.clear()}
+        {console.log(report.REPORT_TEMPLATE.SHIFT_MANAGER && report.REPORT_TEMPLATE.SHIFT_MANAGER.NAME)} */}
+        <input
+          type="text"
+          defaultValue={report.REPORT_TEMPLATE.SHIFT_MANAGER && report.REPORT_TEMPLATE.SHIFT_MANAGER.NAME}
+          // onChange={(e) => {
+          //   handleUpdateReport(report._id, "NAME", e.target.value);
+          // }}
+          disabled
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        />
+      </td>
+      <td class="border border-a-dark2 uppercase">
         <select
           className="px-2 w-28  box-border bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1   bg-a-dark"
           defaultValue={report.STATUS}
