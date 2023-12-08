@@ -109,11 +109,11 @@ const TableRow_OAL_REPORT = ({
         />
       </td>
       <td class="border border-a-dark2 uppercase">
-        {/* {console.clear()}
-        {console.log(report.REPORT_TEMPLATE.SHIFT_MANAGER && report.REPORT_TEMPLATE.SHIFT_MANAGER.NAME)} */}
+        {/* {console.clear()} */}
+        {/* {console.log(report.INITIAL_REPORT_TEMPLATE)} */}
         <input
           type="text"
-          defaultValue={report.REPORT_TEMPLATE.SHIFT_MANAGER && report.REPORT_TEMPLATE.SHIFT_MANAGER.NAME}
+          defaultValue={report.INITIAL_REPORT_TEMPLATE.SHIFT_MANAGER && report.INITIAL_REPORT_TEMPLATE.SHIFT_MANAGER.NAME}
           // onChange={(e) => {
           //   handleUpdateReport(report._id, "NAME", e.target.value);
           // }}

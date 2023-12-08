@@ -295,6 +295,64 @@ const Table_OAL_REPORT = ({ report }) => {
     }
   };
 
+  // handle transfer report
+  const handleTransferReport = () => {
+    // handle processing once template found in the useState
+    if (!processingreport_template) {
+      // validating if report template should not be null then we need to proceed because on the report creation time we need report_template id
+      if (report_template) {
+        const data = {
+          newreporttemplate: report_template._id,
+        };
+
+        const confirm_for_transfer = window.confirm(
+          "Are you sure you want to transfer pending reports in your feeds? "
+        );
+        if (!confirm_for_transfer) {
+          return false;
+        }
+
+        // return false;
+
+        fetch(
+          `${Config["domains"]["serverside"]["development"]}/report/oalinadpreport/transfer`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json", // Specify that you're sending JSON data
+            },
+            body: JSON.stringify(data), // Set the JSON data as the request body
+          }
+        )
+          .then((e) => {
+            return e.json();
+          })
+          .then((data) => {
+            if (data.status === "success") {
+              toast.success(data.alert, { autoClose: 2000 });
+              console.clear();
+         
+              setallreports((prevReports) => {
+                return [...prevReports, ...data.payloaddata]
+              });
+              setTimeout(() => {
+                // setallreports(data.payloaddata);
+                // console.log(data.payloaddata);
+                // setprocessingallreports(false);
+              }, 0);
+            } else {
+              // setprocessingallreports(false);
+              toast.error(data.alert, { autoClose: 2000 });
+            }
+
+            // setTimeout(() => {
+
+            // }, 300);
+          });
+      }
+    }
+  };
+
   // handle delete report in state
   // ? this is once we are updating status of inad passenger report so if the status is clear so on that case we need to remove form state as well that perticular report 
   const handleDeleteReportInState = (reportID)=>{
@@ -398,7 +456,7 @@ const Table_OAL_REPORT = ({ report }) => {
         )}
         {!processingallreports && allreports && (
           <button
-            // onClick={handleAddNewRecord}
+            onClick={handleTransferReport}
             className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
           >
             <MiniLoadingBar />
