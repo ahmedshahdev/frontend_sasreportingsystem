@@ -10,6 +10,7 @@ import { MiniLoadingBar } from "../../../Global/Loader/LoadingBar";
 // Components
 import TableRow from "./TableROW_OAL_INADP_REPORT";
 import OAL_REPORT_TEMPLATE from "./OAL_INADP_REPORT_TEMPLATE";
+import TableRowContainer_OAL_REPORT from "./TableROWContainer_OAL_INADP_REPORT copy";
 
 // Icons
 import {
@@ -54,6 +55,8 @@ const Table_OAL_REPORT = ({ report }) => {
 
   // visibility
   const [focusReport, setFocusReport] = useState(true);
+  const [displayReportAttachments, setDisplayReportAttachments] = useState(false);
+
 
   // fetch report if not found so create it based on data
   useEffect(() => {
@@ -273,9 +276,7 @@ const Table_OAL_REPORT = ({ report }) => {
             if (data.status === "success") {
               toast.success(data.alert, { autoClose: 2000 });
               setallreports((prevReports) => {
-                return prevReports.filter(
-                  (report) => report._id !== reportID
-                );
+                return prevReports.filter((report) => report._id !== reportID);
               });
               setTimeout(() => {
                 // setallreports(data.payloaddata);
@@ -331,9 +332,9 @@ const Table_OAL_REPORT = ({ report }) => {
             if (data.status === "success") {
               toast.success(data.alert, { autoClose: 2000 });
               console.clear();
-         
+
               setallreports((prevReports) => {
-                return [...prevReports, ...data.payloaddata]
+                return [...prevReports, ...data.payloaddata];
               });
               setTimeout(() => {
                 // setallreports(data.payloaddata);
@@ -354,14 +355,12 @@ const Table_OAL_REPORT = ({ report }) => {
   };
 
   // handle delete report in state
-  // ? this is once we are updating status of inad passenger report so if the status is clear so on that case we need to remove form state as well that perticular report 
-  const handleDeleteReportInState = (reportID)=>{
+  // ? this is once we are updating status of inad passenger report so if the status is clear so on that case we need to remove form state as well that perticular report
+  const handleDeleteReportInState = (reportID) => {
     setallreports((prevReports) => {
-      return prevReports.filter(
-        (report) => report._id !== reportID
-      );
+      return prevReports.filter((report) => report._id !== reportID);
     });
-  }
+  };
 
   useEffect(() => {
     if (!processingreport_template) {
@@ -391,7 +390,10 @@ const Table_OAL_REPORT = ({ report }) => {
         });
 
         setreport_comments((comments) => {
-          return { ...comments, "airlines-records-breakdown-count": airlineCounts };
+          return {
+            ...comments,
+            "airlines-records-breakdown-count": airlineCounts,
+          };
         });
       }
     }
@@ -449,7 +451,7 @@ const Table_OAL_REPORT = ({ report }) => {
         {!processingallreports && allreports && (
           <button
             onClick={handleAddNewRecord}
-            className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 w-10 mt-5 rounded-md text-white uppercase text-xs"
+            className="  bg-blue-600 hover:bg-blue-700 flex items-center justify-center h-10 w-10 mt-5 rounded-md text-white uppercase text-xs"
           >
             <MdOutlineAddCircleOutline className="text-lg" />
           </button>
@@ -457,11 +459,18 @@ const Table_OAL_REPORT = ({ report }) => {
         {!processingallreports && allreports && (
           <button
             onClick={handleTransferReport}
-            className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
+            className="  bg-blue-600 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
           >
             <MiniLoadingBar />
             <span className="margin-right:5px"> Pending shift record</span>
-           
+          </button>
+        )}
+         {!processingallreports && allreports && (
+          <button
+            onClick={()=>setDisplayReportAttachments(!displayReportAttachments)}
+            className={"  flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs " + (displayReportAttachments ? ' bg-blue-600 hover:bg-blue-700' : 'bg-a-dark2 ')}
+          >
+            <span className="margin-right:5px"> {displayReportAttachments ? 'Hide Attachments' : 'Show attachments'} </span>
           </button>
         )}
       </div>
@@ -472,11 +481,18 @@ const Table_OAL_REPORT = ({ report }) => {
               <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
                 {/* for action */}
               </td>
+              <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
+                Sno.
+              </td>
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 Added By (STAFF)
               </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">CREATED UNDER</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">STATUS</td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                CREATED UNDER
+              </td>
+              <td class="border border-a-dark2  text-xs uppercase p-1">
+                STATUS
+              </td>
               <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
               <td class="border border-a-dark2  text-xs uppercase p-1">
                 AIRLINE
@@ -512,13 +528,17 @@ const Table_OAL_REPORT = ({ report }) => {
           <tbody class="bg1a-gr2">
             {allreports.map((report, index) => {
               return (
-                <TableRow
-                  report={report}
-                  handleDeleteReportInState={handleDeleteReportInState}
-                  updateReportInState={updateReportInState}
-                  handleDeleteReport={handleDeleteReport}
-                  key={"OAL-REPORT-" + index}
-                />
+                <>
+                  <TableRow
+                    report={report}
+                    handleDeleteReportInState={handleDeleteReportInState}
+                    updateReportInState={updateReportInState}
+                    handleDeleteReport={handleDeleteReport}
+                    key={"OAL-REPORT-" + index}
+                    index={index}
+                  />
+                  { displayReportAttachments && <TableRowContainer_OAL_REPORT report={report}/>}
+                </>
               );
             })}
           </tbody>

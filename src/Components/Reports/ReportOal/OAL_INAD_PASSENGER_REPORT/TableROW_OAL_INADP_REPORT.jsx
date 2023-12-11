@@ -1,5 +1,5 @@
 // React Import
-import React from "react";
+import React, { useState } from "react";
 
 // Other Libraries
 import { toast } from "react-toastify";
@@ -24,7 +24,10 @@ const TableRow_OAL_REPORT = ({
   updateReportInState,
   handleDeleteReport,
   handleDeleteReportInState,
+  index
 }) => {
+
+
   const handleUpdateReport = (reportId, key, value) => {
     const data = {
       reportId,
@@ -87,7 +90,8 @@ const TableRow_OAL_REPORT = ({
   return (
     <tr
       key={report._id}
-      className={handleDateExceedValidity(report.DATE) && "blanking__popup"}
+      className={`hover:bg-a-dark bg-black${handleDateExceedValidity(report.DATE) ? " blanking__popup" : ""}`}
+
     >
       <td class="border border-a-dark2 uppercase  ">
         <div className="flex items-center justify-center gap-1 px-1 w-full h-full cursor-pointer">
@@ -101,6 +105,13 @@ const TableRow_OAL_REPORT = ({
           {/* <MdOutlineControlPointDuplicate className="text-lg" /> */}{" "}
           {/* Not important to add for now */}
         </div>
+      </td>
+      <td class="border border-a-dark2 uppercase text-center bg-a-dark">
+        {/* <input
+          type="text"
+          className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
+        /> */}
+        {index + 1}
       </td>
       <td class="border border-a-dark2 uppercase">
         <input
@@ -132,9 +143,11 @@ const TableRow_OAL_REPORT = ({
               );
 
               if (confirm) {
-             
                 handleUpdateReport(report._id, "STATUS", e.target.value);
                 handleDeleteReportInState(report._id); 
+                // 
+
+                // system.log()
               } else {
                 e.target.value = report.STATUS
               }
@@ -218,6 +231,7 @@ const TableRow_OAL_REPORT = ({
           className="px-2 w-28  box-border text-white bg-transparent rounded-none border-2 border-transparent focus:border-blue-500 border-solid  outline-none py-1  "
         />
       </td>
+      
       <td class="border border-a-dark2 uppercase">
         <input
           type="text"

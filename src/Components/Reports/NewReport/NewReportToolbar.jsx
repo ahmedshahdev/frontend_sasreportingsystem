@@ -190,7 +190,7 @@ const NewReportToolbar = () => {
         .then((data) => {
           if (data.status === "success") {
             setreport_list(data.payloaddata);
-            setselectedreport(data.payloaddata[0]._id);
+            setselectedreport(data.payloaddata[2]._id);
           } else {
             setreport_list([]);
             toast.error(data.alert, { autoClose: 2000 });
