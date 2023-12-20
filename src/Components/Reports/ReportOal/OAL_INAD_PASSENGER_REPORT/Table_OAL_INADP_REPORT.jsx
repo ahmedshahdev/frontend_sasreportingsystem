@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 // Other Libraries
+import { useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
 
 // Global Components
@@ -54,7 +55,7 @@ const Table_OAL_REPORT = ({ report }) => {
   const [processingallreports, setprocessingallreports] = useState(true);
 
   // visibility
-  const [focusReport, setFocusReport] = useState(true);
+  const [focusReport, setFocusReport] = useState(false);
   const [displayReportAttachments, setDisplayReportAttachments] = useState(false);
 
 
@@ -421,9 +422,9 @@ const Table_OAL_REPORT = ({ report }) => {
       {!processingallreports && allreports && (
         <button
           onClick={() => setFocusReport(!focusReport)}
-          className="  bg-blue-500 hover:bg-blue-700 flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs"
+          className={` ${focusReport ? 'bg-blue-500 hover:bg-blue-700' : 'bg-a-dark2'} flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs`}
         >
-          {focusReport ? "Focus On Report" : "View All"}
+          {focusReport ? "Focus On Report" : "View Template"}
         </button>
       )}
       {focusReport && (
@@ -470,7 +471,7 @@ const Table_OAL_REPORT = ({ report }) => {
             onClick={()=>setDisplayReportAttachments(!displayReportAttachments)}
             className={"  flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs " + (displayReportAttachments ? ' bg-blue-600 hover:bg-blue-700' : 'bg-a-dark2 ')}
           >
-            <span className="margin-right:5px"> {displayReportAttachments ? 'Hide Attachments' : 'Show attachments'} </span>
+            <span className="margin-right:5px"> {displayReportAttachments ? 'Hide Attachments' : 'VIEW attachments'} </span>
           </button>
         )}
       </div>

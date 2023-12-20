@@ -26,8 +26,6 @@ const TableRow_OAL_REPORT = ({
   handleDeleteReportInState,
   index
 }) => {
-
-
   const handleUpdateReport = (reportId, key, value) => {
     const data = {
       reportId,
