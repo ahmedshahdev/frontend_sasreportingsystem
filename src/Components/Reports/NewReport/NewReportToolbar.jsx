@@ -24,7 +24,7 @@ import INAD_ABY_REPORT from "../ReportVct/INAD_ABY_REPORT/INAD_ABY_REPORT";
 import INAD_OAL_REPORT from "../ReportVct/INAD_OAL_REPORT/INAD_OAL_REPORT";
 import INTERCEPTED_REPORT from "../ReportVct/INTERCEPTED_REPORT/INTERCEPTED_REPORT";
 import ShiftCsm_REPORT from "../ReportCSM/CSM_SHIFT_REPORT/CSM_SHIFT_REPORT";
-import OAL_INADP_REPORT from  "../ReportOal/OAL_INAD_PASSENGER_REPORT/OAL_INADP_REPORT.jsx"
+import OAL_INADP_REPORT from "../ReportOal/OAL_INAD_PASSENGER_REPORT/OAL_INADP_REPORT.jsx";
 
 // Icons
 
@@ -32,7 +32,6 @@ import OAL_INADP_REPORT from  "../ReportOal/OAL_INAD_PASSENGER_REPORT/OAL_INADP_
 import Config from "../../../Json/config.json";
 
 const NewReportToolbar = () => {
-
   // report category stats
   const [reportcategory_list, setreportcategory_list] = useState([]);
   const [processinghandlereportcategory, setprocessinghandlereportcategory] =
@@ -44,11 +43,10 @@ const NewReportToolbar = () => {
   const [processinghandlereport, setprocessinghandlereport] = useState(false);
   const [selectedreport, setselectedreport] = useState(null);
 
-
   const [selectedreportdate, setselectedreportdate] = useState(
     new Date().toISOString().split("T")[0]
   );
-  const [selectedreportshift, setselectedreportshift] = useState('MORNING');
+  const [selectedreportshift, setselectedreportshift] = useState("MORNING");
 
   //
   const report_manual_list = {
@@ -112,7 +110,7 @@ const NewReportToolbar = () => {
             selectedreport: selectedreport,
             selectedreportdate: selectedreportdate,
             selectedreportshift: selectedreportshift,
-            setselectedreportshift: setselectedreportshift
+            setselectedreportshift: setselectedreportshift,
           }}
         />
       ),
@@ -125,16 +123,27 @@ const NewReportToolbar = () => {
             selectedreport: selectedreport,
             selectedreportdate: selectedreportdate,
             selectedreportshift: selectedreportshift,
-            setselectedreportshift: setselectedreportshift
+            setselectedreportshift: setselectedreportshift,
           }}
         />
       ),
     },
     "6534593abeecf3fbb5d1730a": {
       report_name: "CSM Shift Report",
-      component: <ShiftCsm_REPORT />,
+      component: (
+        <OAL_INADP_REPORT
+          report={{
+            selectedreport: selectedreport,
+            selectedreportdate: selectedreportdate,
+            selectedreportshift: selectedreportshift,
+            setselectedreportshift: setselectedreportshift,
+          }}
+        />
+      ),
     },
   };
+
+  // ? this is to get only component from list based on selectedreport to avoid others
 
   const SelectedReportComponent = report_manual_list[selectedreport]?.component;
 
@@ -159,7 +168,9 @@ const NewReportToolbar = () => {
 
           // by default 1st report category will be set here
           if (data.payloaddata.length > 0) {
-            setselectedreportcategory(data.payloaddata[0]);
+            setselectedreportcategory(
+              data.payloaddata[data.payloaddata.length - 1]
+            );
             setprocessinghandlereport(true);
           }
         } else {
@@ -190,7 +201,14 @@ const NewReportToolbar = () => {
         .then((data) => {
           if (data.status === "success") {
             setreport_list(data.payloaddata);
-            setselectedreport(data.payloaddata[2]._id);
+
+            // ? based on the selected report category it will fetch all the reports so now we need to verify that if we have multiple reports or single because incase of single data.payloaddata[2]._id will give error if it is single (why we need [2] index report because of inad passenger report)
+
+            if (data.payloaddata.length >= 2) {
+              setselectedreport(data.payloaddata[2]._id);
+            } else {
+              setselectedreport(data.payloaddata[0]._id);
+            }
           } else {
             setreport_list([]);
             toast.error(data.alert, { autoClose: 2000 });
@@ -208,11 +226,15 @@ const NewReportToolbar = () => {
       {/* New Report Toolbar */}
       <div className="bg-a-dark py-4  rounded-md flex flex-wrap lg:flex-nowrap gap-3 items-center px-5 w-full   h-auto">
         {/*  */}
+
+        {/* info system */}
         <select
           type="text"
           className="h-10 rounded-md px-3 text-sm bg-a-dark2 "
           placeholder="Report Category"
           value={selectedreportcategory}
+          // defaultValue={selectedreportcategory._id}
+
           onChange={(e) => {
             setselectedreportcategory(e.target.value);
             setprocessinghandlereport(true);
@@ -224,6 +246,10 @@ const NewReportToolbar = () => {
             reportcategory_list.map((singlereportcategory, index) => {
               return (
                 <option value={singlereportcategory._id}>
+                  {console.log("------------------")}
+                  {console.log(singlereportcategory._id)}
+                  {console.log(selectedreportcategory._id)}
+                  {console.log("------------------")}
                   {singlereportcategory.name}
                 </option>
               );
