@@ -130,6 +130,7 @@ const NewReportToolbar = () => {
     },
     "6534593abeecf3fbb5d1730a": {
       report_name: "CSM Shift Report",
+
       component: (
         <ShiftCsm_REPORT
           report={{
@@ -169,7 +170,8 @@ const NewReportToolbar = () => {
           // by default 1st report category will be set here
           if (data.payloaddata.length > 0) {
             setselectedreportcategory(
-              data.payloaddata[data.payloaddata.length - 1]
+              data.payloaddata[0] // to select custom by indexing
+              // data.payloaddata[data.payloaddata.length - 1] // to select last category
             );
             setprocessinghandlereport(true);
           }
@@ -204,11 +206,13 @@ const NewReportToolbar = () => {
 
             // ? based on the selected report category it will fetch all the reports so now we need to verify that if we have multiple reports or single because incase of single data.payloaddata[2]._id will give error if it is single (why we need [2] index report because of inad passenger report)
 
-            if (data.payloaddata.length >= 2) {
-              setselectedreport(data.payloaddata[2]._id);
-            } else {
-              setselectedreport(data.payloaddata[0]._id);
-            }
+            // if (data.payloaddata.length >= 2) {
+            //   setselectedreport(data.payloaddata[2]._id);
+            // } else {
+            //   setselectedreport(data.payloaddata[0]._id);
+            // }
+
+            setselectedreport(data.payloaddata[1]._id);
           } else {
             setreport_list([]);
             toast.error(data.alert, { autoClose: 2000 });
