@@ -16,7 +16,7 @@ import { MdOutlineCreateNewFolder } from "react-icons/md";
 const ReportsMenu = () => {
   return (
     <>
-      <p className=" text-xs  text-blue-500 font-bold uppercase">Reports</p>
+      <p className=" text-xs  text-red-500 font-bold uppercase">Reports</p>
       {
         <MenusItem
           showicon={true}

@@ -1,4 +1,5 @@
 // React Import
+import {AbstractView} from "react"
 import React, { useEffect, useState } from "react";
 
 // Other Libraries
@@ -56,8 +57,8 @@ const Table_OAL_REPORT = ({ report }) => {
 
   // visibility
   const [focusReport, setFocusReport] = useState(false);
-  const [displayReportAttachments, setDisplayReportAttachments] = useState(false);
-
+  const [displayReportAttachments, setDisplayReportAttachments] =
+    useState(false);
 
   // fetch report if not found so create it based on data
   useEffect(() => {
@@ -422,7 +423,9 @@ const Table_OAL_REPORT = ({ report }) => {
       {!processingallreports && allreports && (
         <button
           onClick={() => setFocusReport(!focusReport)}
-          className={` ${focusReport ? 'bg-red-500 hover:bg-red-700' : 'bg-a-dark2'} flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs`}
+          className={` ${
+            focusReport ? "bg-red-500 hover:bg-red-700" : "bg-a-dark2"
+          } flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs`}
         >
           {focusReport ? "Focus On Report" : "View Template"}
         </button>
@@ -466,85 +469,136 @@ const Table_OAL_REPORT = ({ report }) => {
             <span className="margin-right:5px"> Pending shift record</span>
           </button>
         )}
-         {!processingallreports && allreports && (
+        {!processingallreports && allreports && (
           <button
-            onClick={()=>setDisplayReportAttachments(!displayReportAttachments)}
-            className={"  flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs " + (displayReportAttachments ? ' bg-red-600 hover:bg-red-700' : 'bg-a-dark2 ')}
+            onClick={() =>
+              setDisplayReportAttachments(!displayReportAttachments)
+            }
+            className={
+              "  flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs " +
+              (displayReportAttachments
+                ? " bg-red-600 hover:bg-red-700"
+                : "bg-a-dark2 ")
+            }
           >
-            <span className="margin-right:5px"> {displayReportAttachments ? 'Hide Attachments' : 'VIEW attachments'} </span>
+            <span className="margin-right:5px">
+              {" "}
+              {displayReportAttachments
+                ? "Hide Attachments"
+                : "VIEW attachments"}{" "}
+            </span>
           </button>
         )}
       </div>
-      {!processingallreports && allreports && (
+
+
+      <div>
         <table class="border-collapse  w-full  text-xs rounded-lg overflow-x-scroll lg:overflow-x-scroll mt-5">
           <thead className="bg-gradient-to-r from-a-pink to-a-blue text-a-gray">
             <tr className="bg-a-dark">
               <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
                 {/* for action */}
+                Key
               </td>
               <td class="border  border-a-dark2  text-xs uppercase p-1 pl-2">
-                Sno.
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Added By (STAFF)
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                CREATED UNDER
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                STATUS
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">NAME</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                AIRLINE
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                DEP/ARRV FLIGHTS
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Sector
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Nationality
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">PNR</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                REMARKS
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                ACTIONS
-              </td>
-
-              <td class="border border-a-dark2  text-xs uppercase p-1">Date</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">Time</td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Added Date
-              </td>
-              <td class="border border-a-dark2  text-xs uppercase p-1">
-                Added Time
+                Value
               </td>
             </tr>
           </thead>
-
-          <tbody class="bg1a-gr2">
-            {allreports.map((report, index) => {
-              return (
-                <>
-                  <TableRow
-                    report={report}
-                    handleDeleteReportInState={handleDeleteReportInState}
-                    updateReportInState={updateReportInState}
-                    handleDeleteReport={handleDeleteReport}
-                    key={"OAL-REPORT-" + index}
-                    index={index}
-                  />
-                  { displayReportAttachments && <TableRowContainer_OAL_REPORT report={report}/>}
-                </>
-              );
-            })}
+          <tbody>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                OTP within 0 Min
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                41%
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                OTP within 15 Min
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                67%
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                OTP Ground Services
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                98%
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                Total G9 Flights
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                61
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                Total on Time
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                25
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                Delay Over 15 Min
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                20
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                Total Delayed
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                36
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                Total Accountable delays
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                01
+              </td>
+            </tr>
+            <tr
+            // key={report._id}
+            >
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2">
+                Total ABY PAX
+              </td>
+              <td class="border border-a-dark2 uppercase  p-5 pl-2 w-1/2 bg-a-dark">
+                7463+80 INF
+              </td>
+            </tr>
           </tbody>
         </table>
-      )}
+      </div>
     </>
   );
 };

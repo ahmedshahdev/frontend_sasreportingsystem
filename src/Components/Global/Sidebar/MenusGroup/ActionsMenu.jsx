@@ -19,7 +19,7 @@ import {TbReportAnalytics} from "react-icons/tb"
 const ActionsMenu = () => {
   return (
     <>
-      <p className=" text-xs  text-blue-500 font-bold uppercase">Actions</p>
+      <p className=" text-xs  text-red-500 font-bold uppercase">Actions</p>
 
       {
         <MenusItem

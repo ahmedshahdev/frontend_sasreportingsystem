@@ -23,7 +23,7 @@ import TICKET_SALES_REPORT from "../ReportReservation/TICKET_SALES_REPORT/TICKET
 import INAD_ABY_REPORT from "../ReportVct/INAD_ABY_REPORT/INAD_ABY_REPORT";
 import INAD_OAL_REPORT from "../ReportVct/INAD_OAL_REPORT/INAD_OAL_REPORT";
 import INTERCEPTED_REPORT from "../ReportVct/INTERCEPTED_REPORT/INTERCEPTED_REPORT";
-// import ShiftCsm_REPORT from "../ReportCSM/CSM_SHIFT_REPORT/CSM_SHIFT_REPORT";
+import ShiftCsm_REPORT from "../ReportCSM/OAL_INAD_PASSENGER_REPORT/OAL_INADP_REPORT.jsx";
 import OAL_INADP_REPORT from "../ReportOal/OAL_INAD_PASSENGER_REPORT/OAL_INADP_REPORT.jsx";
 
 // Icons
@@ -131,7 +131,7 @@ const NewReportToolbar = () => {
     "6534593abeecf3fbb5d1730a": {
       report_name: "CSM Shift Report",
       component: (
-        <OAL_INADP_REPORT
+        <ShiftCsm_REPORT
           report={{
             selectedreport: selectedreport,
             selectedreportdate: selectedreportdate,
@@ -300,7 +300,7 @@ const NewReportToolbar = () => {
         {false && (
           <button
             // onClick={handleAddDepartment}
-            className="  bg-blue-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
+            className="  bg-red-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
           >
             {/* {processinghandleadddepartment && <MiniLoadingBar />}
         {!processinghandleadddepartment && "Add"} */}
