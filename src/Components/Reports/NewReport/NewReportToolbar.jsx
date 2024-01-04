@@ -196,6 +196,10 @@ const NewReportToolbar = () => {
           "Content-Type": "application/json", // Specify that you're sending JSON data
         },
         body: JSON.stringify(data), // Set the JSON data as the request body
+        // if content in session: 
+        // session.set('Content-Type', 'application/json')
+        // return session.remove('IPCONFIGRATION')
+        
       })
         .then((e) => {
           return e.json();
