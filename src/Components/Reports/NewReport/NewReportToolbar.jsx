@@ -102,6 +102,11 @@ const NewReportToolbar = () => {
       report_name: "Seat Sales",
       component: <SEAT_SALES_REPORT />,
     },
+    "655e82f584b1bb397f13ac2e": {
+      report_name: "OAL Delay Flights Report",
+      // component: <SEAT_SALES_REPORT />,
+      component: "",
+    },
     "6532ae1b7ce4885d88b9bacd": {
       report_name: "OAL Report",
       component: (
@@ -132,7 +137,7 @@ const NewReportToolbar = () => {
       report_name: "CSM Shift Report",
 
       component: (
-        <ShiftCsm_REPORT
+        <OAL_INADP_REPORT
           report={{
             selectedreport: selectedreport,
             selectedreportdate: selectedreportdate,
@@ -196,10 +201,9 @@ const NewReportToolbar = () => {
           "Content-Type": "application/json", // Specify that you're sending JSON data
         },
         body: JSON.stringify(data), // Set the JSON data as the request body
-        // if content in session: 
+        // if content in session:
         // session.set('Content-Type', 'application/json')
         // return session.remove('IPCONFIGRATION')
-        
       })
         .then((e) => {
           return e.json();
@@ -216,7 +220,7 @@ const NewReportToolbar = () => {
             //   setselectedreport(data.payloaddata[0]._id);
             // }
 
-            setselectedreport(data.payloaddata[1]._id);
+            setselectedreport(data.payloaddata[0]._id);
           } else {
             setreport_list([]);
             toast.error(data.alert, { autoClose: 2000 });
@@ -254,10 +258,7 @@ const NewReportToolbar = () => {
             reportcategory_list.map((singlereportcategory, index) => {
               return (
                 <option value={singlereportcategory._id}>
-                  {console.log("------------------")}
-                  {console.log(singlereportcategory._id)}
-                  {console.log(selectedreportcategory._id)}
-                  {console.log("------------------")}
+                 
                   {singlereportcategory.name}
                 </option>
               );
@@ -308,7 +309,7 @@ const NewReportToolbar = () => {
         {false && (
           <button
             // onClick={handleAddDepartment}
-            className="  bg-red-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
+            className="  bg-teal-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
           >
             {/* {processinghandleadddepartment && <MiniLoadingBar />}
         {!processinghandleadddepartment && "Add"} */}

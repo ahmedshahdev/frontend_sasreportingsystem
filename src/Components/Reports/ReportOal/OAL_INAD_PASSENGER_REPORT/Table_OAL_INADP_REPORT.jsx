@@ -422,7 +422,7 @@ const Table_OAL_REPORT = ({ report }) => {
       {!processingallreports && allreports && (
         <button
           onClick={() => setFocusReport(!focusReport)}
-          className={` ${focusReport ? 'bg-red-500 hover:bg-red-700' : 'bg-a-dark2'} flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs`}
+          className={` ${focusReport ? 'bg-teal-500 hover:bg-red-700' : 'bg-a-dark2'} flex items-center justify-center h-10 px-2 mt-5 rounded-md text-white uppercase text-xs`}
         >
           {focusReport ? "Focus On Report" : "View Template"}
         </button>

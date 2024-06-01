@@ -8,18 +8,17 @@ import React from "react";
 // Components
 import MenusItem from "../MenusItem";
 
-
 // Icons
 import { AiOutlineUser, AiOutlineApartment } from "react-icons/ai";
-import {BsGrid} from "react-icons/bs";
-import {TbReportAnalytics} from "react-icons/tb"
+import { BsGrid } from "react-icons/bs";
+import { TbReportAnalytics } from "react-icons/tb";
 
 // Assets
 
 const ActionsMenu = () => {
   return (
     <>
-      <p className=" text-xs  text-red-500 font-bold uppercase">Actions</p>
+      <p className=" text-xs  text-teal-500 font-bold uppercase">Actions</p>
 
       {
         <MenusItem
@@ -57,7 +56,7 @@ const ActionsMenu = () => {
         />
       }
 
-<hr class="h-px  bg-gray-200 border-0 dark:bg-a-dark2"></hr>
+      <hr class="h-px  bg-gray-200 border-0 dark:bg-a-dark2"></hr>
     </>
   );
 };

@@ -75,7 +75,7 @@ const DepartmentToolbar = () => {
       />
       <button
         onClick={handleAddDepartment}
-        className="  bg-red-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
+        className="  bg-teal-500 hover:bg-teal-600 px-12 h-10 rounded-md text-white uppercase text-xs"
       >
         {processinghandleadddepartment && <MiniLoadingBar />}
         {!processinghandleadddepartment && "Add"}
